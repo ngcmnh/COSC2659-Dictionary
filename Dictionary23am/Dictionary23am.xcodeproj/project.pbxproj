@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27C009AC2AADB4E30053BF6A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C009AB2AADB4E30053BF6A /* SignUpView.swift */; };
+		27C009AF2AADBEC80053BF6A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 27C009AE2AADBEC80053BF6A /* FirebaseAuth */; };
+		27C009B12AADBEC80053BF6A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 27C009B02AADBEC80053BF6A /* FirebaseFirestore */; };
+		27C009B32AADC27D0053BF6A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27C009B22AADC27D0053BF6A /* GoogleService-Info.plist */; };
 		27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D213462AAC15B500E91149 /* Dictionary23amApp.swift */; };
 		27D213492AAC15B500E91149 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D213482AAC15B500E91149 /* ContentView.swift */; };
 		27D2134B2AAC15B600E91149 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D2134A2AAC15B600E91149 /* Assets.xcassets */; };
@@ -14,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27C009AB2AADB4E30053BF6A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		27C009B22AADC27D0053BF6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27D213432AAC15B500E91149 /* Dictionary23am.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictionary23am.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27D213462AAC15B500E91149 /* Dictionary23amApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary23amApp.swift; sourceTree = "<group>"; };
 		27D213482AAC15B500E91149 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +32,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C009AF2AADBEC80053BF6A /* FirebaseAuth in Frameworks */,
+				27C009B12AADBEC80053BF6A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +65,7 @@
 				27D213462AAC15B500E91149 /* Dictionary23amApp.swift */,
 				27D213482AAC15B500E91149 /* ContentView.swift */,
 				27D2134A2AAC15B600E91149 /* Assets.xcassets */,
+				27C009B22AADC27D0053BF6A /* GoogleService-Info.plist */,
 				27D2134C2AAC15B600E91149 /* Preview Content */,
 			);
 			path = Dictionary23am;
@@ -73,6 +82,7 @@
 		27D213542AAC15C700E91149 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				27C009AB2AADB4E30053BF6A /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -107,6 +117,10 @@
 			dependencies = (
 			);
 			name = Dictionary23am;
+			packageProductDependencies = (
+				27C009AE2AADBEC80053BF6A /* FirebaseAuth */,
+				27C009B02AADBEC80053BF6A /* FirebaseFirestore */,
+			);
 			productName = Dictionary23am;
 			productReference = 27D213432AAC15B500E91149 /* Dictionary23am.app */;
 			productType = "com.apple.product-type.application";
@@ -135,6 +149,9 @@
 				Base,
 			);
 			mainGroup = 27D2133A2AAC15B500E91149;
+			packageReferences = (
+				27C009AD2AADBEC80053BF6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 27D213442AAC15B500E91149 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -151,6 +168,7 @@
 			files = (
 				27D2134E2AAC15B600E91149 /* Preview Assets.xcassets in Resources */,
 				27D2134B2AAC15B600E91149 /* Assets.xcassets in Resources */,
+				27C009B32AADC27D0053BF6A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27D213492AAC15B500E91149 /* ContentView.swift in Sources */,
+				27C009AC2AADB4E30053BF6A /* SignUpView.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dictionary23am/Preview Content\"";
-				DEVELOPMENT_TEAM = PB3XR3BZ6K;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -320,7 +339,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dictionary23am/Preview Content\"";
-				DEVELOPMENT_TEAM = PB3XR3BZ6K;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -363,6 +382,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27C009AD2AADBEC80053BF6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27C009AE2AADBEC80053BF6A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27C009AD2AADBEC80053BF6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		27C009B02AADBEC80053BF6A /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27C009AD2AADBEC80053BF6A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 27D2133B2AAC15B500E91149 /* Project object */;
 }
