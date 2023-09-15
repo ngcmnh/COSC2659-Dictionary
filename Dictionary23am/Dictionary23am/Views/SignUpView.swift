@@ -9,66 +9,85 @@ import SwiftUI
 import Firebase
 
 struct SignUpView: View {
+    @State private var navigateToLogin = false
     @State private var email = ""
     @State private var password = ""
-    var body: some View {
-        VStack(spacing: 30) {
-            
-            Spacer()
-            
-            TextField ("Email", text: $email)
-                .foregroundColor(.primary)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
-            
-            TextField ("Password", text: $password)
-                .foregroundColor(.primary)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
-            
-            Spacer()
-            
-            Button {
-                // sign up
-                signup()
-            } label: {
-                Text("Sign Up")
-                    .bold()
-                    .frame(width: 140, height:40)
-                    .background(Color.white)
-                    .cornerRadius(10)
-            }
-            
-            Spacer()
-            
-            Button {
-                // log in
-                login()
-            } label: {
-                Text("Log In")
-                    .bold()
-                    .frame(width: 140, height:40)
-                    .background(Color.white)
-                    .cornerRadius(10)
-            }
-            
-            Spacer()
-        }
-        .background(Color.black)
-    }
+    @State private var reconfirmPassword = ""
+    @State private var errorText = ""
+    @State private var alreadyLoggedIn = false
     
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) {result, error in
-            if error != nil {
-                print(error!.localizedDescription)
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 30) {
+                
+                NavigationLink("", destination: LoginView(), isActive: $navigateToLogin)
+                    .opacity(0)
+                
+                Text("Sign Up")
+                    .font(.largeTitle)
+                    .padding(.vertical, 40)
+                
+                //Spacer()
+                
+                TextField ("Email", text: $email)
+                    .foregroundColor(.primary)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.horizontal, 30)
+                
+                SecureField ("Password", text: $password)
+                    .foregroundColor(.primary)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.horizontal, 30)
+                
+                SecureField ("Reconfirm Password", text: $reconfirmPassword)
+                    .foregroundColor(.primary)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(.horizontal, 30)
+                
+                Text(errorText)
+                    .font(.title3)
+                
+                Button {
+                    // sign up
+                    signup()
+                } label: {
+                    Text("Sign Up")
+                        .bold()
+                        .frame(width: 140, height:40)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    self.navigateToLogin = true
+                }) {
+                    Text("Already have an account? Login")
+                        .foregroundColor(.white)
+                }
+                
+                Spacer()
             }
+            .background(Color.gray)
         }
     }
     
     func signup() {
-        Auth.auth().createUser(withEmail: email, password: password) {result, error in
+        // Check password confirmation before attempting to sign up
+        if password != reconfirmPassword {
+            self.navigateToLogin = false
+            errorText = "Confirm password does not match"
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if error != nil {
+                self.navigateToLogin = false
                 print(error!.localizedDescription)
+                errorText = error!.localizedDescription
+            } else {
+                self.navigateToLogin = true
             }
         }
     }
