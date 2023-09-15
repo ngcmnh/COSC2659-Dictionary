@@ -11,6 +11,10 @@
 		27D213492AAC15B500E91149 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D213482AAC15B500E91149 /* ContentView.swift */; };
 		27D2134B2AAC15B600E91149 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D2134A2AAC15B600E91149 /* Assets.xcassets */; };
 		27D2134E2AAC15B600E91149 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27D2134D2AAC15B600E91149 /* Preview Assets.xcassets */; };
+		F91CAF702AB2E07900AA6712 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF6F2AB2E07900AA6712 /* NoteDetailView.swift */; };
+		F91CAF722AB30A7700AA6712 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF712AB30A7700AA6712 /* NoteModel.swift */; };
+		F91CAF742AB30BAE00AA6712 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */; };
+		F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF752AB30BF100AA6712 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		27D213482AAC15B500E91149 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		27D2134A2AAC15B600E91149 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27D2134D2AAC15B600E91149 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F91CAF6F2AB2E07900AA6712 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailView.swift; path = Dictionary23am/NoteDetailView.swift; sourceTree = SOURCE_ROOT; };
+		F91CAF712AB30A7700AA6712 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteModel.swift; path = Dictionary23am/NoteModel.swift; sourceTree = SOURCE_ROOT; };
+		F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailViewModel.swift; path = Dictionary23am/NoteDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
+		F91CAF752AB30BF100AA6712 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = Dictionary23am/ViewModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 		27D213542AAC15C700E91149 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F91CAF6F2AB2E07900AA6712 /* NoteDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -80,6 +89,8 @@
 		27D213562AAC15D300E91149 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */,
+				F91CAF752AB30BF100AA6712 /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -87,6 +98,7 @@
 		27D213572AAC15D800E91149 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F91CAF712AB30A7700AA6712 /* NoteModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +175,10 @@
 			files = (
 				27D213492AAC15B500E91149 /* ContentView.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
+				F91CAF742AB30BAE00AA6712 /* NoteDetailViewModel.swift in Sources */,
+				F91CAF702AB2E07900AA6712 /* NoteDetailView.swift in Sources */,
+				F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */,
+				F91CAF722AB30A7700AA6712 /* NoteModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
