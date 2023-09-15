@@ -11,7 +11,7 @@ import SwiftUI
 struct Dictionary23amApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
     }
 }
