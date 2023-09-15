@@ -83,7 +83,11 @@ struct LoginView: View {
                 print(error!.localizedDescription)
                 errorText = error!.localizedDescription
             } else {
-                self.alreadyLoggedIn = true // Explicitly set the state after successful login
+                if let user = result?.user {
+                    let userID = user.uid
+                    print("Successfully registered with User ID: \(userID)")
+                }
+                self.alreadyLoggedIn = true
             }
         }
     }
