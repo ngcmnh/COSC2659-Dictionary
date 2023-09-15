@@ -13,13 +13,16 @@
 
 import Foundation
 
-class NoteDetailViewModel : ObservableObject, ViewModel {
+class NoteDetailViewModel : ViewModel {
+    let maxChars : Int = 50
+    
+    // put request to save note
     
     var horizontalPadding: CGFloat {
         if isIpad {
             return 40
         } else {
-            return 15
+            return 18
         }
     }
 }

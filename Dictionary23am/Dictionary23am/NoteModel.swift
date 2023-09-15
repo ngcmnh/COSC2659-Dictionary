@@ -14,6 +14,7 @@
 import Foundation
 
 class NoteModel : ObservableObject {
+    // ID
     var title: String
     var dateCreated: Date
     var body: String

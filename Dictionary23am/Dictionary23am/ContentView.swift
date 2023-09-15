@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: NoteDetailView(viewModel: NoteDetailViewModel(), note: NoteModel.sample).navigationBarBackButtonHidden(true)) {
+            NavigationLink(destination: NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample)).navigationBarBackButtonHidden(true)) {
                 Image(systemName: "note.text")
             }
         }

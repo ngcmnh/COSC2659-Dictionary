@@ -9,6 +9,7 @@
  Last modified: /09/2023
  Acknowledgement:
  https://stackoverflow.com/questions/69002861/controlling-size-of-texteditor-in-swiftui
+ https://developer.apple.com/tutorials/swiftui-concepts/driving-changes-in-your-ui-with-state-and-bindings
  */
 
 import SwiftUI
@@ -17,7 +18,9 @@ struct NoteDetailView: View {
     @Environment(\.dismiss) private var dismiss
     let viewModel: NoteDetailViewModel
     
-    @State var note: NoteModel // get from note list view
+    // get from note list view
+    @Binding var note: NoteModel
+    
     @State private var editState : Bool = false
     @State var bodyTextEditorHeight : CGFloat = 20
     
@@ -35,14 +38,25 @@ struct NoteDetailView: View {
                 
                 Spacer()
                 
-                Button {
-                    editState.toggle()
-                } label: {
-                    Image(systemName: "square.and.pencil")
-                        .imageScale(.large)
+                if editState {
+                    Button {
+                        editState.toggle()
+                        // put request function
+                    } label: {
+                        Text("Save")
+                    }
+                    .padding(.horizontal, 15)
+                    .foregroundColor(Color("Primary"))
+                } else {
+                    Button {
+                        editState.toggle()
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .imageScale(.large)
+                    }
+                    .padding(.horizontal, 15)
+                    .foregroundColor(Color("Primary"))
                 }
-                .padding(.horizontal, 15)
-                .foregroundColor(Color("Primary"))
             }
             .padding(.bottom, 10)
             // ------------------------------------------
@@ -59,7 +73,7 @@ struct NoteDetailView: View {
                             .foregroundColor(Color("Text"))
                             .disableAutocorrection(true)
                             .lineLimit(1)
-                            
+                        
                         
                         Text("\(note.dateCreated.formatted(.dateTime.hour().minute().day().month().year()))")
                             .font(.subheadline)
@@ -76,7 +90,7 @@ struct NoteDetailView: View {
                                 })
                             TextEditor(text: $note.body)
                                 .frame(height: max(40,bodyTextEditorHeight))
-//                                .scrollDisabled(true)
+                            //                                .scrollDisabled(true)
                                 .autocorrectionDisabled(true)
                                 .foregroundColor(Color("Text"))
                                 .lineSpacing(5)
@@ -102,15 +116,21 @@ struct NoteDetailView: View {
             }
             .padding(.horizontal, viewModel.horizontalPadding)
         }
+        .onChange(of: note.title) { newValue in
+            if newValue.count > viewModel.maxChars {
+                note.title = String(newValue.prefix(viewModel.maxChars))
+            }
+        }
     }
 }
 
 struct NoteDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteDetailView(viewModel: NoteDetailViewModel(), note: NoteModel.sample)
+        NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample))
     }
 }
 
+// Needed for dynamic texteditor height
 struct ViewHeightKey: PreferenceKey {
     static var defaultValue: CGFloat { 0 }
     static func reduce(value: inout Value, nextValue: () -> Value) {
