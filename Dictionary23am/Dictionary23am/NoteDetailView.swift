@@ -76,7 +76,7 @@ struct NoteDetailView: View {
                                 })
                             TextEditor(text: $note.body)
                                 .frame(height: max(40,bodyTextEditorHeight))
-                                .scrollDisabled(true)
+//                                .scrollDisabled(true)
                                 .autocorrectionDisabled(true)
                                 .foregroundColor(Color("Text"))
                                 .lineSpacing(5)

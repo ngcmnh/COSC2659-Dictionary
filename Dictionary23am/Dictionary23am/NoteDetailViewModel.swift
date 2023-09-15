@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct NoteDetailViewModel : ViewModel {
+class NoteDetailViewModel : ObservableObject, ViewModel {
     
     var horizontalPadding: CGFloat {
         if isIpad {
