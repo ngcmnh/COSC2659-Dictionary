@@ -7,6 +7,7 @@ struct SplashScreenView: View {
     @State private var size = 0.8
     @State private var opacity = 0.5
     var body: some View {
+        // MARK: -Redirect Main View
         if isActive {
             ContentView()
         } else {
