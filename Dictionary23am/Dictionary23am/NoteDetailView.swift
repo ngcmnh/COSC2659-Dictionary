@@ -41,6 +41,7 @@ struct NoteDetailView: View {
                 
                 if isEditing {
                     Button {
+                        noteStatus = .none
                         isEditing.toggle()
                         if noteStatus == .create {
                             // create request
@@ -56,6 +57,7 @@ struct NoteDetailView: View {
                     .foregroundColor(Color("Primary"))
                 } else {
                     Button {
+                        noteStatus = .update
                         isEditing.toggle()
                     } label: {
                         Image(systemName: "square.and.pencil")
