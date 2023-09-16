@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-// MARK: -Case Icon
+// MARK: -Tab Icon
+//Has to be the same name with SF app symbols
 enum Tab: String, CaseIterable {
     case book
     case person
@@ -20,6 +21,7 @@ struct CustomTabBar: View {
         selectedTab.rawValue + ".fill"
     }
     
+    // MARK: -Tab Color
     private var tabColor: Color {
         switch selectedTab {
         case .book:
