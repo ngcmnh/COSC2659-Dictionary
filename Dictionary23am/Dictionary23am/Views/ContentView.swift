@@ -1,9 +1,4 @@
-//
-//  ContentView.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 09/09/2023.
-//
+
 
 import SwiftUI
 
@@ -21,7 +16,7 @@ struct ContentView: View {
                 TabView(selection: $selectedTab) {
                     switch selectedTab {
                     case .book:
-                        ViewA()
+                        DictionaryView()
                     case .person:
                         ViewB()
                     case .leaf:
