@@ -2,7 +2,7 @@
 //  Dictionary23amApp.swift
 //  Dictionary23am
 //
-//  Created by ngminh on 09/09/2023.
+//  Created by Minh Dang Cong on 15/09/2023.
 //
 
 import SwiftUI
