@@ -19,7 +19,7 @@ struct LoginView: View {
     var body: some View {
         if alreadyLoggedIn {
             //direct to main view
-            MainView(isLoggedIn: $alreadyLoggedIn)
+            ContentView(isLoggedIn: $alreadyLoggedIn)
         }
         else {
             content

@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 
-struct MainView: View {
+struct ProfileView: View {
     @Binding var isLoggedIn: Bool
     var body: some View {
         VStack {
@@ -28,6 +28,8 @@ struct MainView: View {
                     .cornerRadius(10)
             }
             .padding()
+            
+            Spacer()
         }
     }
     
@@ -41,8 +43,8 @@ struct MainView: View {
         }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(isLoggedIn: .constant(true))
+        ProfileView(isLoggedIn: .constant(true))
     }
 }

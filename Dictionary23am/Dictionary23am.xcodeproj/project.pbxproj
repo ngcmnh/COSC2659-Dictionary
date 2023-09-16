@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		273F62982AB4A5690059CC09 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F62972AB4A5690059CC09 /* MainView.swift */; };
+		273F62982AB4A5690059CC09 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F62972AB4A5690059CC09 /* ProfileView.swift */; };
 		273F629A2AB4B9330059CC09 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F62992AB4B9330059CC09 /* LoginView.swift */; };
+		27B183582AB5A58A00E7E00A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B183572AB5A58A00E7E00A /* CustomTabBar.swift */; };
+		27B1835C2AB5A6B900E7E00A /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1835B2AB5A6B900E7E00A /* DictionaryModel.swift */; };
+		27B1835E2AB5A6DE00E7E00A /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1835D2AB5A6DE00E7E00A /* DictionaryView.swift */; };
+		27B183602AB5A84100E7E00A /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1835F2AB5A84100E7E00A /* DictionaryViewModel.swift */; };
+		27B183622AB5A86900E7E00A /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B183612AB5A86900E7E00A /* SplashScreenView.swift */; };
 		27C009AC2AADB4E30053BF6A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C009AB2AADB4E30053BF6A /* SignUpView.swift */; };
 		27C009AF2AADBEC80053BF6A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 27C009AE2AADBEC80053BF6A /* FirebaseAuth */; };
 		27C009B12AADBEC80053BF6A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 27C009B02AADBEC80053BF6A /* FirebaseFirestore */; };
@@ -20,8 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		273F62972AB4A5690059CC09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		273F62972AB4A5690059CC09 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		273F62992AB4B9330059CC09 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		27B183572AB5A58A00E7E00A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		27B1835B2AB5A6B900E7E00A /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
+		27B1835D2AB5A6DE00E7E00A /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
+		27B1835F2AB5A84100E7E00A /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
+		27B183612AB5A86900E7E00A /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		27C009AB2AADB4E30053BF6A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		27C009B22AADC27D0053BF6A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27D213432AAC15B500E91149 /* Dictionary23am.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictionary23am.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +98,10 @@
 			children = (
 				27C009AB2AADB4E30053BF6A /* SignUpView.swift */,
 				273F62992AB4B9330059CC09 /* LoginView.swift */,
-				273F62972AB4A5690059CC09 /* MainView.swift */,
+				273F62972AB4A5690059CC09 /* ProfileView.swift */,
+				27B183572AB5A58A00E7E00A /* CustomTabBar.swift */,
+				27B1835D2AB5A6DE00E7E00A /* DictionaryView.swift */,
+				27B183612AB5A86900E7E00A /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -96,6 +109,7 @@
 		27D213562AAC15D300E91149 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				27B1835F2AB5A84100E7E00A /* DictionaryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -103,6 +117,7 @@
 		27D213572AAC15D800E91149 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				27B1835B2AB5A6B900E7E00A /* DictionaryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,10 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B1835E2AB5A6DE00E7E00A /* DictionaryView.swift in Sources */,
 				27D213492AAC15B500E91149 /* ContentView.swift in Sources */,
-				273F62982AB4A5690059CC09 /* MainView.swift in Sources */,
+				27B1835C2AB5A6B900E7E00A /* DictionaryModel.swift in Sources */,
+				27B183602AB5A84100E7E00A /* DictionaryViewModel.swift in Sources */,
+				273F62982AB4A5690059CC09 /* ProfileView.swift in Sources */,
 				27C009AC2AADB4E30053BF6A /* SignUpView.swift in Sources */,
 				273F629A2AB4B9330059CC09 /* LoginView.swift in Sources */,
+				27B183622AB5A86900E7E00A /* SplashScreenView.swift in Sources */,
+				27B183582AB5A58A00E7E00A /* CustomTabBar.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
