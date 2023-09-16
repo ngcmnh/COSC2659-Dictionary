@@ -20,10 +20,12 @@ struct NoteListView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(notes, id: \.content) { note in
-                    NavigationLink(destination: NoteDetailView(noteContent: note.content)) {
+                ForEach(notes, id: \.id) { note in
+                    // Within the NoteListView's ForEach loop:
+                    NavigationLink(destination: NoteDetailView(note: $notes[notes.firstIndex(where: { $0.id == note.id })!])) {
                         NoteRowView(isDone: $notes[notes.firstIndex(where: { $0.content == note.content })!].isSelected, noteContent: note.content)
                     }
+
                         .swipeActions {
                             Button {
                                 withAnimation {
@@ -42,7 +44,12 @@ struct NoteListView: View {
                             .tint(.red)
                         }
                 }
+                Text("Number of Notes: \(notes.count)") // This line displays the count of notes.
+                               .padding(.top, 10)
+                               .font(.footnote)
+                               .foregroundColor(.gray)
             }
+            
             .sheet(isPresented: $showingAddNoteView) {
                 AddNoteView(notes: $notes)
             }

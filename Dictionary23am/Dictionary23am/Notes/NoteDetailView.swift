@@ -8,15 +8,11 @@
 import SwiftUI
 
 struct NoteDetailView: View {
-    @State private var editableNoteContent: String
-    
-    init(noteContent: String) {
-        _editableNoteContent = State(initialValue: noteContent)
-    }
+    @Binding var note: Note
     
     var body: some View {
         VStack {
-            TextEditor(text: $editableNoteContent)
+            TextEditor(text: $note.content)
                 .padding()
                 .background(Color(white: 0.95)) // Light gray background
                 .cornerRadius(8) // Rounded corners
@@ -27,9 +23,12 @@ struct NoteDetailView: View {
     }
 }
 
+
 struct NoteDetailView_Previews: PreviewProvider {
+    @State static var sampleNote = Note(content: "Sample Note Content", isSelected: false)
+    
     static var previews: some View {
-        NoteDetailView(noteContent: "Sample Note Content")
+        NoteDetailView(note: $sampleNote)
     }
 }
 

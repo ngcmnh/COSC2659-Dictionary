@@ -8,7 +8,8 @@
 import SwiftUI
 
 // Step 1: Create a Note model.
-struct Note {
+struct Note: Identifiable {
+    var id = UUID()
     var content: String
     var isSelected: Bool
 }
