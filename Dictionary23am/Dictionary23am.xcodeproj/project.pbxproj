@@ -15,6 +15,7 @@
 		F91CAF722AB30A7700AA6712 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF712AB30A7700AA6712 /* NoteModel.swift */; };
 		F91CAF742AB30BAE00AA6712 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */; };
 		F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF752AB30BF100AA6712 /* ViewModel.swift */; };
+		F95BEAC82AB57E8400B222EB /* NoteStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEAC72AB57E8400B222EB /* NoteStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		F91CAF712AB30A7700AA6712 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteModel.swift; path = Dictionary23am/NoteModel.swift; sourceTree = SOURCE_ROOT; };
 		F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailViewModel.swift; path = Dictionary23am/NoteDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		F91CAF752AB30BF100AA6712 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = Dictionary23am/ViewModel.swift; sourceTree = SOURCE_ROOT; };
+		F95BEAC72AB57E8400B222EB /* NoteStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteStatus.swift; path = Dictionary23am/NoteStatus.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				F91CAF712AB30A7700AA6712 /* NoteModel.swift */,
+				F95BEAC72AB57E8400B222EB /* NoteStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				F91CAF702AB2E07900AA6712 /* NoteDetailView.swift in Sources */,
 				F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */,
 				F91CAF722AB30A7700AA6712 /* NoteModel.swift in Sources */,
+				F95BEAC82AB57E8400B222EB /* NoteStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,8 +20,9 @@ struct NoteDetailView: View {
     
     // get from note list view
     @Binding var note: NoteModel
+    @Binding var noteStatus: NoteStatus
     
-    @State private var editState : Bool = false
+    @State private var isEditing : Bool = false
     @State var bodyTextEditorHeight : CGFloat = 20
     
     var body: some View {
@@ -38,10 +39,16 @@ struct NoteDetailView: View {
                 
                 Spacer()
                 
-                if editState {
+                if isEditing {
                     Button {
-                        editState.toggle()
-                        // put request function
+                        isEditing.toggle()
+                        if noteStatus == .create {
+                            // create request
+                            noteStatus = .none
+                        } else {
+                            // update request
+                            noteStatus = .none
+                        }
                     } label: {
                         Text("Save")
                     }
@@ -49,7 +56,7 @@ struct NoteDetailView: View {
                     .foregroundColor(Color("Primary"))
                 } else {
                     Button {
-                        editState.toggle()
+                        isEditing.toggle()
                     } label: {
                         Image(systemName: "square.and.pencil")
                             .imageScale(.large)
@@ -63,7 +70,7 @@ struct NoteDetailView: View {
             ScrollView {
                 VStack (alignment: .leading, spacing: 15) {
                     // -------- EDIT MODE ----------------
-                    if editState {
+                    if isEditing {
                         TextEditor(text: $note.title)
                             .frame(width: (viewModel.screenWidth - viewModel.horizontalPadding*2))
                             .frame(minHeight: (UIFont.preferredFont(forTextStyle: .largeTitle).pointSize+7))
@@ -126,7 +133,7 @@ struct NoteDetailView: View {
 
 struct NoteDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample))
+        NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample), noteStatus: .constant(.none))
     }
 }
 

@@ -16,7 +16,11 @@ import Foundation
 class NoteDetailViewModel : ViewModel {
     let maxChars : Int = 50
     
-    // put request to save note
+    // request to save note
+    func createNote(note: NoteModel) {
+        print("Creating Note")
+        print(note)
+    }
     
     var horizontalPadding: CGFloat {
         if isIpad {
