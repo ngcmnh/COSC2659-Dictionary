@@ -9,14 +9,33 @@ import SwiftUI
 import Firebase
 
 struct ProfileView: View {
+    @EnvironmentObject var userVM: UserViewModel
     @Binding var isLoggedIn: Bool
+    @State private var profileName: String = ""
+    @State private var profileBio: String = ""
+    
     var body: some View {
         VStack {
-            Text("Welcome!")
+            Text("Profile!")
                 .font(.largeTitle)
                 .padding()
 
             Spacer()
+            
+            if let user = userVM.currentUser {
+                Text("Name: \(user.username)")
+                    .font(.title)
+                    .padding()
+                
+                Text("Email: \(user.email)")
+                    .padding()
+                
+                Text("Bio: \(user.bio)")
+                    .padding()
+                
+                Text("ID: \(user.id)")
+                    .padding()
+            }
 
             Button {
                 logout()
@@ -46,5 +65,6 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(isLoggedIn: .constant(true))
+            .environmentObject(UserViewModel())
     }
 }

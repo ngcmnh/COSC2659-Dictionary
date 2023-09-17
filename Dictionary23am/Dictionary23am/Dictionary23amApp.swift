@@ -10,6 +10,7 @@ import Firebase
 
 @main
 struct Dictionary23amApp: App {
+    @StateObject private var userVM = UserViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -18,6 +19,7 @@ struct Dictionary23amApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .environmentObject(userVM)
         }
     }
 }
