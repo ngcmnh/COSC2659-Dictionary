@@ -22,7 +22,7 @@ struct ContentView: View {
                     case .person:
                         ProfileView(isLoggedIn: $isLoggedIn)
                     case .leaf:
-                        DictionaryView()
+                        NoteListView(tempNote: NoteModel.sample, noteStatus: .none, showingAddNoteView: false)
                     }
                 }
             }
