@@ -77,6 +77,7 @@ struct NoteListView: View {
                 )
             .toolbar {
                 Button {
+                    tempNote = NoteModel(id: UUID(), title: "Untitled", dateCreated: Date(), body: "empty...")
                     noteStatus = .create
                     self.action = 1
                 } label: {
@@ -88,8 +89,7 @@ struct NoteListView: View {
         }
         .onChange(of: noteStatus, perform: { newStatus in
             if prevStatus == .create && newStatus == .none {
-                var newNote = NoteModel(id: UUID(), title: tempNote.title, dateCreated: tempNote.dateCreated, body: tempNote.body)
-                viewModel.notes.append(newNote)
+                viewModel.notes.append(tempNote)
             }
             prevStatus = newStatus
         })
