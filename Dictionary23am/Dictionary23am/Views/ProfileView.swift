@@ -13,42 +13,61 @@ struct ProfileView: View {
     @Binding var isLoggedIn: Bool
     @State private var profileName: String = ""
     @State private var profileBio: String = ""
+    @State private var showEditSheet = false
     
     var body: some View {
-        VStack {
-            Text("Profile!")
-                .font(.largeTitle)
-                .padding()
+        NavigationView {
+            VStack {
+                Text("Profile!")
+                    .font(.largeTitle)
+                    .padding()
 
-            Spacer()
-            
-            if let user = userVM.currentUser {
-                Text("Name: \(user.username)")
-                    .font(.title)
-                    .padding()
+                Spacer()
                 
-                Text("Email: \(user.email)")
-                    .padding()
+                if let user = userVM.currentUser {
+                    AsyncImage(url: URL(string: user.imgUrl))
+                        .frame(width: 120, height: 120)
+                        .cornerRadius(100)
+                    
+                    Text("Name: \(user.username)")
+                        .font(.title)
+                        .padding()
+                    
+                    Text("Email: \(user.email)")
+                        .padding()
+                    
+                    Text("Bio: \(user.bio)")
+                        .padding()
+                }
                 
-                Text("Bio: \(user.bio)")
-                    .padding()
-                
-                Text("ID: \(user.id)")
-                    .padding()
-            }
+                Spacer()
 
-            Button {
-                logout()
-            } label: {
-                Text("Logout")
-                    .bold()
-                    .frame(width: 140, height: 40)
-                    .background(Color.white)
-                    .cornerRadius(10)
+                HStack {
+                    Button {
+                        logout()
+                    } label: {
+                        Text("Logout")
+                            .bold()
+                            .frame(width: 140, height: 40)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                    }
+                    .padding()
+                    
+                    Button {
+                        showEditSheet = true
+                    } label: {
+                        Image(systemName: "pencil")
+                    }
+                    .padding()
+                }
+                
+                Spacer()
             }
-            .padding()
-            
-            Spacer()
+        }
+        .navigationViewStyle(.stack)
+        .sheet(isPresented: $showEditSheet) {
+            EditProfileSheet()
         }
     }
     

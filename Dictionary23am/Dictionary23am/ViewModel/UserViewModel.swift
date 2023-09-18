@@ -36,18 +36,20 @@ class UserViewModel: ObservableObject {
     }
     
     // Update name and bio in Firestore
-    func updateNameAndBio(username: String, bio: String) {
+    func updateNameAndBio(imgUrl: String, username: String, bio: String) {
         guard let userID = self.currentUser?.id else { return }
         
         // Update the fields in Firestore
         let db = Firestore.firestore()
-        db.collection("users").document(userID).setData([
+        db.collection("user").document(userID).setData([
+            "imgUrl": imgUrl,
             "username": username,
             "bio": bio
         ], merge: true) { error in
             if let error = error {
                 print("Error updating document: \(error)")
             } else {
+                self.currentUser?.imgUrl = imgUrl
                 self.currentUser?.username = username
                 self.currentUser?.bio = bio
             }
