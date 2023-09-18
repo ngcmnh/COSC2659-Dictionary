@@ -130,6 +130,11 @@ struct NoteDetailView: View {
                 note.title = String(newValue.prefix(viewModel.maxChars))
             }
         }
+        .onAppear() {
+            if noteStatus == .create {
+                isEditing = true
+            }
+        }
     }
 }
 

@@ -11,4 +11,12 @@ enum NoteStatus : Equatable {
     case none
     case create
     case update
+    
+    var rawValue: String {
+            switch self {
+            case .none: return "none"
+            case .create: return "create"
+            case .update: return "update"
+            }
+        }
 }

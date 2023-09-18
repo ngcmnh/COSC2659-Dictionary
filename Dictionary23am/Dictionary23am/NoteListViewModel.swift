@@ -1,9 +1,14 @@
-//
-//  NoteListViewModel.swift
-//  Dictionary23am
-//
-//  Created by Tran Anh Hung on 17/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Dang Cong Minh, Tran Minh Anh
+ ID: S3931980
+ Created date: 16/09/2023
+ Last modified: /09/2023
+ Acknowledgement:
+ */
 
 import Foundation
 
