@@ -9,11 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            NavigationLink(destination: NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample), noteStatus: .constant(.none)).navigationBarBackButtonHidden(true)) {
-                Image(systemName: "note.text")
-            }
-        }
+        NoteListView(tempNote: NoteModel.sample, noteStatus: .none, showingAddNoteView: false)
     }
 }
 

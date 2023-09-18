@@ -13,7 +13,7 @@
 
 import Foundation
 
-class NoteModel : Identifiable, ObservableObject {
+class NoteModel : Identifiable, ObservableObject, Equatable {
     var id: UUID
     var title: String
     var dateCreated: Date
@@ -24,6 +24,11 @@ class NoteModel : Identifiable, ObservableObject {
         self.title = title
         self.dateCreated = dateCreated
         self.body = body
+    }
+    
+    static func == (lhs: NoteModel, rhs: NoteModel) -> Bool {
+        return
+            lhs.id == rhs.id
     }
 }
 

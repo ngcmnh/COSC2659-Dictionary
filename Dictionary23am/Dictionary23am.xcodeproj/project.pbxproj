@@ -16,6 +16,10 @@
 		F91CAF742AB30BAE00AA6712 /* NoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */; };
 		F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CAF752AB30BF100AA6712 /* ViewModel.swift */; };
 		F95BEAC82AB57E8400B222EB /* NoteStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEAC72AB57E8400B222EB /* NoteStatus.swift */; };
+		F95BEAD02AB6F9A500B222EB /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEACF2AB6F9A500B222EB /* AddNoteView.swift */; };
+		F95BEAD22AB6F9EA00B222EB /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEAD12AB6F9EA00B222EB /* NoteListView.swift */; };
+		F95BEAD42AB6F9FB00B222EB /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEAD32AB6F9FB00B222EB /* NoteRowView.swift */; };
+		F95BEAD62AB7163200B222EB /* NoteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95BEAD52AB7163200B222EB /* NoteListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteDetailViewModel.swift; path = Dictionary23am/NoteDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		F91CAF752AB30BF100AA6712 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewModel.swift; path = Dictionary23am/ViewModel.swift; sourceTree = SOURCE_ROOT; };
 		F95BEAC72AB57E8400B222EB /* NoteStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteStatus.swift; path = Dictionary23am/NoteStatus.swift; sourceTree = SOURCE_ROOT; };
+		F95BEACF2AB6F9A500B222EB /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNoteView.swift; path = Dictionary23am/AddNoteView.swift; sourceTree = SOURCE_ROOT; };
+		F95BEAD12AB6F9EA00B222EB /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteListView.swift; path = Dictionary23am/NoteListView.swift; sourceTree = SOURCE_ROOT; };
+		F95BEAD32AB6F9FB00B222EB /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteRowView.swift; path = Dictionary23am/NoteRowView.swift; sourceTree = SOURCE_ROOT; };
+		F95BEAD52AB7163200B222EB /* NoteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NoteListViewModel.swift; path = Dictionary23am/NoteListViewModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				F91CAF6F2AB2E07900AA6712 /* NoteDetailView.swift */,
+				F95BEACF2AB6F9A500B222EB /* AddNoteView.swift */,
+				F95BEAD12AB6F9EA00B222EB /* NoteListView.swift */,
+				F95BEAD32AB6F9FB00B222EB /* NoteRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +104,7 @@
 			children = (
 				F91CAF732AB30BAE00AA6712 /* NoteDetailViewModel.swift */,
 				F91CAF752AB30BF100AA6712 /* ViewModel.swift */,
+				F95BEAD52AB7163200B222EB /* NoteListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -178,10 +190,14 @@
 			files = (
 				27D213492AAC15B500E91149 /* ContentView.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
+				F95BEAD22AB6F9EA00B222EB /* NoteListView.swift in Sources */,
 				F91CAF742AB30BAE00AA6712 /* NoteDetailViewModel.swift in Sources */,
 				F91CAF702AB2E07900AA6712 /* NoteDetailView.swift in Sources */,
 				F91CAF762AB30BF100AA6712 /* ViewModel.swift in Sources */,
 				F91CAF722AB30A7700AA6712 /* NoteModel.swift in Sources */,
+				F95BEAD42AB6F9FB00B222EB /* NoteRowView.swift in Sources */,
+				F95BEAD02AB6F9A500B222EB /* AddNoteView.swift in Sources */,
+				F95BEAD62AB7163200B222EB /* NoteListViewModel.swift in Sources */,
 				F95BEAC82AB57E8400B222EB /* NoteStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

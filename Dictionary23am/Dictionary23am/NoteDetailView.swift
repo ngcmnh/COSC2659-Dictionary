@@ -16,7 +16,7 @@ import SwiftUI
 
 struct NoteDetailView: View {
     @Environment(\.dismiss) private var dismiss
-    let viewModel: NoteDetailViewModel
+    let viewModel = NoteDetailViewModel()
     
     // get from note list view
     @Binding var note: NoteModel
@@ -135,7 +135,7 @@ struct NoteDetailView: View {
 
 struct NoteDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteDetailView(viewModel: NoteDetailViewModel(), note: .constant(NoteModel.sample), noteStatus: .constant(.none))
+        NoteDetailView(note: .constant(NoteModel.sample), noteStatus: .constant(.none))
     }
 }
 
