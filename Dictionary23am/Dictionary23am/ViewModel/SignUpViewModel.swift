@@ -18,7 +18,7 @@ class SignUpViewModel : ViewModel {
         if isIpad {
             return 250
         } else {
-            return 35
+            return 50
         }
     }
 }

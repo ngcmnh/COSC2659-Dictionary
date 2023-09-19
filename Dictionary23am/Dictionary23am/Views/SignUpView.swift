@@ -29,37 +29,40 @@ struct SignUpView: View {
                 .padding(.vertical, 40)
                 .foregroundColor(Color("Primary"))
             
-            TextField ("Email", text: $email)
-                .font(Font(viewModel.body))
-                .foregroundColor(Color("Text"))
-                .tint(Color("Tertiary"))
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, viewModel.horizontalPadding)
-                .textContentType(.password)
-                .textInputAutocapitalization(.never)
-            
-            SecureField ("Password", text: $password)
-                .font(Font(viewModel.body))
-                .foregroundColor(Color("Text"))
-                .tint(Color("Tertiary"))
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, viewModel.horizontalPadding)
-                .textContentType(.password)
-                .textInputAutocapitalization(.never)
-            
-            SecureField ("Reconfirm Password", text: $reconfirmPassword)
-                .font(Font(viewModel.body))
-                .foregroundColor(Color("Text"))
-                .tint(Color("Tertiary"))
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, viewModel.horizontalPadding)
-                .textContentType(.password)
-                .textInputAutocapitalization(.never)
-            
-            Text(errorText)
-                .font(Font(viewModel.body))
-                .foregroundColor(.red)
-            
+            VStack(spacing: 20) {
+                TextField ("Email", text: $email)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                SecureField ("Password", text: $password)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                SecureField ("Reconfirm Password", text: $reconfirmPassword)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                Text(errorText)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(.red)
+            }
+            .padding(.horizontal, viewModel.horizontalPadding)
+
             Button {
                 // sign up
                 signup()

@@ -25,11 +25,11 @@ struct CustomTabBar: View {
     private var tabColor: Color {
         switch selectedTab {
         case .book:
-            return .orange
+            return Color("Primary")
         case .person:
-            return .indigo
+            return Color("Secondary")
         case .leaf:
-            return .green
+            return Color("Tertiary")
         }
     }
     

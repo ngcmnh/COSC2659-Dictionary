@@ -48,10 +48,10 @@ struct LoginView: View {
                         .font(Font(viewModel.body))
                         .foregroundColor(Color("Text"))
                         .tint(Color("Tertiary"))
-                        .textFieldStyle(.roundedBorder)
                         .textContentType(.emailAddress)
                         .textInputAutocapitalization(.never)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.all, 8)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                         
                         
                     
@@ -59,9 +59,10 @@ struct LoginView: View {
                         .font(Font(viewModel.body))
                         .foregroundColor(Color("Text"))
                         .tint(Color("Tertiary"))
-                        .textFieldStyle(.roundedBorder)
                         .textContentType(.password)
                         .textInputAutocapitalization(.never)
+                        .padding(.all, 8)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                     
                     Text(errorText)
                         .font(Font(viewModel.body))
