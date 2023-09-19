@@ -36,6 +36,7 @@ struct SignUpView: View {
                     .tint(Color("Tertiary"))
                     .textContentType(.password)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                     .padding(.all, 8)
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                 
@@ -45,6 +46,7 @@ struct SignUpView: View {
                     .tint(Color("Tertiary"))
                     .textContentType(.password)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                     .padding(.all, 8)
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                 
@@ -54,6 +56,7 @@ struct SignUpView: View {
                     .tint(Color("Tertiary"))
                     .textContentType(.password)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                     .padding(.all, 8)
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                 
