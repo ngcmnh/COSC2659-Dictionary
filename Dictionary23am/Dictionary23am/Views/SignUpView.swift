@@ -28,10 +28,11 @@ struct SignUpView: View {
                 .font(Font(viewModel.largeTitle))
                 .padding(.vertical, 40)
                 .foregroundColor(Color("Primary"))
-                        
+            
             TextField ("Email", text: $email)
                 .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
+                .tint(Color("Tertiary"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
                 .textContentType(.password)
@@ -40,6 +41,7 @@ struct SignUpView: View {
             SecureField ("Password", text: $password)
                 .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
+                .tint(Color("Tertiary"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
                 .textContentType(.password)
@@ -48,6 +50,7 @@ struct SignUpView: View {
             SecureField ("Reconfirm Password", text: $reconfirmPassword)
                 .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
+                .tint(Color("Tertiary"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
                 .textContentType(.password)
@@ -70,7 +73,7 @@ struct SignUpView: View {
                     .foregroundColor(Color("TextOnPrimary"))
             }
             .padding(.bottom, 70)
-                        
+            
             Button(action: {
                 self.presentationMode.wrappedValue.dismiss()
             }) {
@@ -100,7 +103,7 @@ struct SignUpView: View {
             }
         }
     }
-
+    
     func storeUserInFirestore(userID: String) {
         let userDocument: [String: Any] = [
             "id": userID,
@@ -108,7 +111,7 @@ struct SignUpView: View {
             "username": "",  // default empty for now
             "bio": ""  // default empty for now
         ]
-
+        
         Firestore.firestore().collection("user").document(userID).setData(userDocument, merge: false) { error in
             if let error = error {
                 print("Error writing user to Firestore: \(error)")
@@ -119,7 +122,7 @@ struct SignUpView: View {
             }
         }
     }
-
+    
     func handleSignupError(_ message: String) {
         print(message)
         errorText = message

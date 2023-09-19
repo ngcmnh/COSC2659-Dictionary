@@ -42,32 +42,39 @@ struct LoginView: View {
                     .foregroundColor(Color("Primary"))
                     .padding(.vertical, 40)
                 
-                TextField ("Email", text: $email)
-                    .font(Font(viewModel.body))
-                    .foregroundColor(Color("Text"))
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, viewModel.horizontalPadding)
-                    .textContentType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                
-                SecureField ("Password", text: $password)
-                    .font(Font(viewModel.body))
-                    .foregroundColor(Color("Text"))
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, viewModel.horizontalPadding)
-                    .textContentType(.password)
-                    .textInputAutocapitalization(.never)
-                
-                Text(errorText)
-                    .font(Font(viewModel.body))
-                    .foregroundColor(.red)
+                VStack {
+                    
+                    TextField ("Email", text: $email)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(Color("Text"))
+                        .tint(Color("Tertiary"))
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        
+                    
+                    SecureField ("Password", text: $password)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(Color("Text"))
+                        .tint(Color("Tertiary"))
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.password)
+                        .textInputAutocapitalization(.never)
+                    
+                    Text(errorText)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(.red)
+                }
+                .padding(.horizontal, viewModel.horizontalPadding)
                 
                 Button {
                     // login action
                     login()
                 } label: {
                     Text("Login")
-                        .font(Font(viewModel.body))
+                        .font(Font(viewModel.footnote))
                         .bold()
                         .foregroundColor(Color("TextOnPrimary"))
                         .frame(width: 140, height:40)
@@ -87,7 +94,7 @@ struct LoginView: View {
                 
                 Spacer()
             }
-            .background(Color("Background"))
+//            .background(Color("Background"))
             .navigationBarBackButtonHidden(true)
         }
         .navigationViewStyle(StackNavigationViewStyle())
