@@ -31,7 +31,6 @@ struct LoginView: View {
     var content: some View {
         NavigationView {
             VStack(spacing: 30) {
-                
                 NavigationLink("", destination: SignUpView(), isActive: $navigateToSignUp)
                     .opacity(0)
                 
@@ -39,21 +38,28 @@ struct LoginView: View {
                     .frame(height: viewModel.screenHeight/6)
                 
                 Text("Login")
-                    .font(.largeTitle)
+                    .font(Font(viewModel.largeTitle))
                     .foregroundColor(Color("Primary"))
+                    .padding(.vertical, 40)
                 
                 TextField ("Email", text: $email)
+                    .font(Font(viewModel.body))
                     .foregroundColor(Color("Text"))
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal, viewModel.horizontalPadding)
+                    .textContentType(.emailAddress)
+                    .textInputAutocapitalization(.never)
                 
                 SecureField ("Password", text: $password)
+                    .font(Font(viewModel.body))
                     .foregroundColor(Color("Text"))
                     .textFieldStyle(.roundedBorder)
                     .padding(.horizontal, viewModel.horizontalPadding)
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
                 
                 Text(errorText)
-                    .font(.title3)
+                    .font(Font(viewModel.body))
                     .foregroundColor(.red)
                 
                 Button {
@@ -61,19 +67,21 @@ struct LoginView: View {
                     login()
                 } label: {
                     Text("Login")
+                        .font(Font(viewModel.body))
                         .bold()
                         .foregroundColor(Color("TextOnPrimary"))
                         .frame(width: 140, height:40)
                         .background(Color("Primary"))
                         .cornerRadius(10)
                 }
-                
-                Spacer()
+                .padding(.bottom, 70)
                 
                 Button(action: {
+                    print("In Login, navigate to sign up? \(navigateToSignUp)")
                     self.navigateToSignUp = true
                 }) {
                     Text("Don't have an account? Sign Up")
+                        .font(Font(viewModel.body))
                         .foregroundColor(Color("Text"))
                 }
                 

@@ -10,7 +10,6 @@ import Firebase
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var navigateToLogin = false
     @State private var email = ""
     @State private var password = ""
     @State private var reconfirmPassword = ""
@@ -22,41 +21,48 @@ struct SignUpView: View {
     var body: some View {
         VStack(spacing: 30) {
             
-            NavigationLink("", destination: LoginView(), isActive: $navigateToLogin)
-                //.opacity(0)
-            
             Spacer()
                 .frame(height: viewModel.screenHeight/6)
             
             Text("Sign Up")
-                .font(.largeTitle)
+                .font(Font(viewModel.largeTitle))
                 .padding(.vertical, 40)
                 .foregroundColor(Color("Primary"))
                         
             TextField ("Email", text: $email)
+                .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
+                .textContentType(.password)
+                .textInputAutocapitalization(.never)
             
             SecureField ("Password", text: $password)
+                .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
+                .textContentType(.password)
+                .textInputAutocapitalization(.never)
             
             SecureField ("Reconfirm Password", text: $reconfirmPassword)
+                .font(Font(viewModel.body))
                 .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
                 .padding(.horizontal, viewModel.horizontalPadding)
+                .textContentType(.password)
+                .textInputAutocapitalization(.never)
             
             Text(errorText)
+                .font(Font(viewModel.body))
                 .foregroundColor(.red)
-                .font(.title3)
             
             Button {
                 // sign up
                 signup()
             } label: {
                 Text("Sign Up")
+                    .font(Font(viewModel.body))
                     .bold()
                     .frame(width: 140, height:40)
                     .background(Color("Primary"))
@@ -66,10 +72,10 @@ struct SignUpView: View {
             .padding(.bottom, 70)
                         
             Button(action: {
-                self.navigateToLogin = true
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Already have an account? Login")
+                    .font(Font(viewModel.body))
                     .foregroundColor(Color("Text"))
             }
             
@@ -109,13 +115,12 @@ struct SignUpView: View {
                 print(userID)
             } else {
                 print("User successfully written to Firestore!")
-                self.navigateToLogin = true
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
 
     func handleSignupError(_ message: String) {
-        self.navigateToLogin = false
         print(message)
         errorText = message
     }

@@ -9,6 +9,7 @@
  Last modified: /09/2023
  Acknowledgement:
  https://github.com/rckim77/Sudoku
+ https://developer.apple.com/design/human-interface-guidelines/typography
  */
 
 import Foundation
@@ -37,5 +38,26 @@ extension ViewModel {
 
     var screenWidth: CGFloat {
         UIScreen.main.bounds.width
+    }
+    
+    var body: UIFont {
+        if isIpad {
+            return UIFont.preferredFont(forTextStyle: .body).withSize(UIFont.preferredFont(forTextStyle: .body).pointSize + 5)
+        }
+        return UIFont.preferredFont(forTextStyle: .body).withSize(UIFont.preferredFont(forTextStyle: .body).pointSize)
+    }
+    
+    var footnote: UIFont {
+        if isIpad {
+            return UIFont.preferredFont(forTextStyle: .footnote).withSize(UIFont.preferredFont(forTextStyle: .footnote).pointSize + 5)
+        }
+        return UIFont.preferredFont(forTextStyle: .footnote).withSize(UIFont.preferredFont(forTextStyle: .footnote).pointSize)
+    }
+    
+    var largeTitle: UIFont {
+        if isIpad {
+            return UIFont.preferredFont(forTextStyle: .largeTitle).withSize(UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 7)
+        }
+        return UIFont.preferredFont(forTextStyle: .largeTitle).withSize(UIFont.preferredFont(forTextStyle: .largeTitle).pointSize)
     }
 }
