@@ -17,34 +17,39 @@ struct SignUpView: View {
     @State private var errorText = ""
     @State private var alreadyLoggedIn = false
     
+    let viewModel = SignUpViewModel()
+    
     var body: some View {
         VStack(spacing: 30) {
             
             NavigationLink("", destination: LoginView(), isActive: $navigateToLogin)
                 //.opacity(0)
             
+            Spacer()
+                .frame(height: viewModel.screenHeight/6)
+            
             Text("Sign Up")
                 .font(.largeTitle)
                 .padding(.vertical, 40)
-            
-            //Spacer()
-            
+                .foregroundColor(Color("Primary"))
+                        
             TextField ("Email", text: $email)
-                .foregroundColor(.primary)
+                .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
+                .padding(.horizontal, viewModel.horizontalPadding)
             
             SecureField ("Password", text: $password)
-                .foregroundColor(.primary)
+                .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
+                .padding(.horizontal, viewModel.horizontalPadding)
             
             SecureField ("Reconfirm Password", text: $reconfirmPassword)
-                .foregroundColor(.primary)
+                .foregroundColor(Color("Text"))
                 .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
+                .padding(.horizontal, viewModel.horizontalPadding)
             
             Text(errorText)
+                .foregroundColor(.red)
                 .font(.title3)
             
             Button {
@@ -54,23 +59,23 @@ struct SignUpView: View {
                 Text("Sign Up")
                     .bold()
                     .frame(width: 140, height:40)
-                    .background(Color.white)
+                    .background(Color("Primary"))
                     .cornerRadius(10)
+                    .foregroundColor(Color("TextOnPrimary"))
             }
-            
-            Spacer()
-            
+            .padding(.bottom, 70)
+                        
             Button(action: {
                 self.navigateToLogin = true
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Already have an account? Login")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("Text"))
             }
             
             Spacer()
         }
-        .background(Color.gray)
+        .background(Color("Background"))
         .navigationBarBackButtonHidden(true)
     }
     

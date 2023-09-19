@@ -16,6 +16,8 @@ struct LoginView: View {
     @State private var alreadyLoggedIn = false
     @State private var errorText = ""
     
+    let viewModel = LoginViewModel()
+    
     var body: some View {
         if alreadyLoggedIn {
             //direct to main view
@@ -33,32 +35,36 @@ struct LoginView: View {
                 NavigationLink("", destination: SignUpView(), isActive: $navigateToSignUp)
                     .opacity(0)
                 
+                Spacer()
+                    .frame(height: viewModel.screenHeight/6)
+                
                 Text("Login")
                     .font(.largeTitle)
-                
-                Spacer()
+                    .foregroundColor(Color("Primary"))
                 
                 TextField ("Email", text: $email)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color("Text"))
                     .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, viewModel.horizontalPadding)
                 
                 SecureField ("Password", text: $password)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color("Text"))
                     .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, 30)
+                    .padding(.horizontal, viewModel.horizontalPadding)
                 
                 Text(errorText)
                     .font(.title3)
+                    .foregroundColor(.red)
                 
                 Button {
                     // login action
-                   login()
+                    login()
                 } label: {
                     Text("Login")
                         .bold()
+                        .foregroundColor(Color("TextOnPrimary"))
                         .frame(width: 140, height:40)
-                        .background(Color.white)
+                        .background(Color("Primary"))
                         .cornerRadius(10)
                 }
                 
@@ -68,14 +74,15 @@ struct LoginView: View {
                     self.navigateToSignUp = true
                 }) {
                     Text("Don't have an account? Sign Up")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("Text"))
                 }
                 
                 Spacer()
             }
-            .background(Color.gray)
+            .background(Color("Background"))
             .navigationBarBackButtonHidden(true)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func login() {

@@ -34,6 +34,8 @@
 		27F2DF9A2AB85AA40061E8E0 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2DF992AB85AA40061E8E0 /* NoteRowView.swift */; };
 		27F2DF9C2AB85ABB0061E8E0 /* NoteStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2DF9B2AB85ABB0061E8E0 /* NoteStatus.swift */; };
 		27F2DF9E2AB85ADD0061E8E0 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F2DF9D2AB85ADD0061E8E0 /* ViewModel.swift */; };
+		F937D2C02AB950F400BF5916 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937D2BF2AB950F400BF5916 /* SignUpViewModel.swift */; };
+		F937D2C22AB953BE00BF5916 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F937D2C12AB953BE00BF5916 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		27F2DF992AB85AA40061E8E0 /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
 		27F2DF9B2AB85ABB0061E8E0 /* NoteStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteStatus.swift; sourceTree = "<group>"; };
 		27F2DF9D2AB85ADD0061E8E0 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F937D2BF2AB950F400BF5916 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		F937D2C12AB953BE00BF5916 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				273290422AB6A2E9005B9EE9 /* UserViewModel.swift */,
 				27F2DF912AB85A190061E8E0 /* NoteDetailViewModel.swift */,
 				27F2DF952AB85A7E0061E8E0 /* NoteListViewModel.swift */,
+				F937D2BF2AB950F400BF5916 /* SignUpViewModel.swift */,
+				F937D2C12AB953BE00BF5916 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -249,12 +255,14 @@
 				27F2DF982AB85A900061E8E0 /* NoteModel.swift in Sources */,
 				273F62982AB4A5690059CC09 /* ProfileView.swift in Sources */,
 				27C009AC2AADB4E30053BF6A /* SignUpView.swift in Sources */,
+				F937D2C02AB950F400BF5916 /* SignUpViewModel.swift in Sources */,
 				27F2DF922AB85A190061E8E0 /* NoteDetailViewModel.swift in Sources */,
 				27F2DF9E2AB85ADD0061E8E0 /* ViewModel.swift in Sources */,
 				273F629A2AB4B9330059CC09 /* LoginView.swift in Sources */,
 				27B183622AB5A86900E7E00A /* SplashScreenView.swift in Sources */,
 				27B183582AB5A58A00E7E00A /* CustomTabBar.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
+				F937D2C22AB953BE00BF5916 /* LoginViewModel.swift in Sources */,
 				27F2DF9A2AB85AA40061E8E0 /* NoteRowView.swift in Sources */,
 				27F2DF8C2AB859A40061E8E0 /* AddNoteView.swift in Sources */,
 				27B183642AB5BE9400E7E00A /* UserModel.swift in Sources */,
