@@ -97,7 +97,6 @@ struct NoteListView: View {
                     Image(systemName: "plus")
                         .foregroundColor(Color("Primary"))
                 }
-                
             }
         }
         .onChange(of: noteStatus, perform: { newStatus in

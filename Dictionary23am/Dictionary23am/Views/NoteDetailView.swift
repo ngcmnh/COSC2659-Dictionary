@@ -51,7 +51,8 @@ struct NoteDetailView: View {
                         notelistVM.addOrUpdateNote(note)
 
                         // Save the updated note to Firestore
-                        notelistVM.saveAllNotesToFirestore(userId: currentUserID!) { success in
+                        //notelistVM.saveAllNotesToFirestore(userId: currentUserID!) { success in
+                        notelistVM.saveToFirestore(note: note, userId: currentUserID!) { success in
                             if success {
                                 print("Successfully saved note.")
                                 // You can add other UI changes here if needed

@@ -97,6 +97,7 @@ class NoteListViewModel: ObservableObject {
     }
 
     func fetchNotes(for userId: String) {
+        self.notes.removeAll()
         db.collection("note")
             .whereField("userId", isEqualTo: userId)
             .getDocuments(completion: { (snapshot, error) in
