@@ -20,7 +20,7 @@ struct SplashScreenView: View {
                     // MARK: -Name App
                     Text("23:AM Dictionary")
                         .font(Font.custom("Baskerville-Bold", size: 26))
-                        .foregroundColor(.black.opacity(0.80))
+                        .foregroundColor(Color("Text"))
                 }
                 .scaleEffect(size)
                 .opacity(opacity)
