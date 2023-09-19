@@ -12,10 +12,11 @@
  */
 
 import Foundation
+import Firebase
 
 class NoteDetailViewModel : ViewModel {
     let maxChars : Int = 50
-    
+            
     // request to save note
     func createNote(note: NoteModel) {
         print("Creating Note")

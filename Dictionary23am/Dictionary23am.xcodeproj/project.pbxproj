@@ -131,7 +131,6 @@
 				27F2DF8D2AB859D60061E8E0 /* NoteDetailView.swift */,
 				27F2DF932AB85A320061E8E0 /* NoteListView.swift */,
 				27F2DF992AB85AA40061E8E0 /* NoteRowView.swift */,
-				27F2DF9B2AB85ABB0061E8E0 /* NoteStatus.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +153,7 @@
 				27B183632AB5BE9400E7E00A /* UserModel.swift */,
 				27F2DF972AB85A900061E8E0 /* NoteModel.swift */,
 				27F2DF9D2AB85ADD0061E8E0 /* ViewModel.swift */,
+				27F2DF9B2AB85ABB0061E8E0 /* NoteStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

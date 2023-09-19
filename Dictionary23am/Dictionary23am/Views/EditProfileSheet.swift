@@ -13,7 +13,6 @@ struct EditProfileSheet: View {
     @State private var username = ""
     @State private var email = ""
     @State private var bio = ""
-    @State private var navigateToProfile = false
     @State private var selectedImageUrl: String? = nil
     @State private var imageUrls = [
         "https://images.foody.vn/res/g95/944014/prof/s360x270/foody-upload-api-foody-mobile-gfgfgfgf-190730093015.jpg",
@@ -61,6 +60,13 @@ struct EditProfileSheet: View {
                     TextEditor(text: $bio)
                 }
             }
+            .onAppear {
+                if let currentUser = userVM.currentUser {
+                    self.username = currentUser.username ?? ""
+                    self.bio = currentUser.bio ?? ""
+                    self.selectedImageUrl = currentUser.imgUrl ?? ""
+                }
+            }
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -75,13 +81,13 @@ struct EditProfileSheet: View {
                 ToolbarItem {
                     Button(action: {
                         saveProfileInfo()
-                        navigateToProfile = true
+                        dismiss()
                         username = ""
                         bio = ""
                     }) {
                         Image(systemName: "checkmark")
                     }
-                    .disabled(username.isEmpty || bio.isEmpty)
+                    //.disabled(username.isEmpty || bio.isEmpty)
                 }
             })
             .navigationTitle("Edit Profile")

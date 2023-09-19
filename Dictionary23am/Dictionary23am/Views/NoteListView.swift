@@ -11,6 +11,7 @@
  */
 
 import SwiftUI
+import Firebase
 
 struct NoteListView: View {
     // Sample Notes Data
@@ -20,12 +21,12 @@ struct NoteListView: View {
     //        Note(content: "Third note", isSelected: false)
     //    ]
     @StateObject var viewModel = NoteListViewModel()
-    
     @State var tempNote: NoteModel
     @State var noteStatus: NoteStatus = .none
     @State var prevStatus: NoteStatus = .none
     @State var showingAddNoteView = false
     @State private var action: Int? = 0
+    let currentUserID = Auth.auth().currentUser?.uid
     
     //    var customBinding: Binding<NoteStatus> {
     //        .init {
@@ -52,7 +53,18 @@ struct NoteListView: View {
                         Button {
                             withAnimation {
                                 if let index = viewModel.notes.firstIndex(of: note) {
-                                    viewModel.notes.remove(at: index)
+                                    // Call the delete function from Firestore
+                                    viewModel.deleteNoteFromFirestore(note: viewModel.notes[index]) { success in
+                                        if success {
+                                            withAnimation {
+                                                viewModel.notes.remove(at: index)
+                                            }
+                                            print("Note deleted successfully!")
+                                        } else {
+                                            print("Failed to delete note from Firestore.")
+                                            // Handle the error or notify the user
+                                        }
+                                    }
                                 }
                             }
                         } label: {
@@ -77,7 +89,8 @@ struct NoteListView: View {
                 )
             .toolbar {
                 Button {
-                    tempNote = NoteModel(id: UUID(), title: "Untitled", dateCreated: Date(), body: "empty...")
+                    tempNote = NoteModel(id: UUID(), userId: currentUserID!, title: "Untitled", dateCreated: Date(), body: "empty...")
+                    //viewModel.saveToFirestore(note: tempNote, userId: currentUserID!, completion: true)
                     noteStatus = .create
                     self.action = 1
                 } label: {

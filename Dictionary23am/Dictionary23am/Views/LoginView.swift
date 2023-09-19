@@ -15,13 +15,12 @@ struct LoginView: View {
     @State private var password = ""
     @State private var alreadyLoggedIn = false
     @State private var errorText = ""
+    @State private var isUserAuthenticated: Bool = (Auth.auth().currentUser != nil)
     
     var body: some View {
-        if alreadyLoggedIn {
-            //direct to main view
-            ContentView(isLoggedIn: $alreadyLoggedIn)
-        }
-        else {
+        if isUserAuthenticated {
+            ContentView(isLoggedIn: $isUserAuthenticated)
+        } else {
             content
         }
     }
@@ -91,7 +90,7 @@ struct LoginView: View {
                     self.userVM.setUserDetails(userID: userID, email: email)
                     
                 }
-                self.alreadyLoggedIn = true
+                self.isUserAuthenticated = true
             }
         }
     }

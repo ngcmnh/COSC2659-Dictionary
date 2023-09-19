@@ -11,6 +11,13 @@ import Firebase
 class UserViewModel: ObservableObject {
     @Published var currentUser: User?
     private var db = Firestore.firestore()
+    
+    init() {
+        if let user = Auth.auth().currentUser {
+            self.currentUser = User(id: user.uid, email: user.email ?? "")
+            fetchUserDetails()
+        }
+    }
 
     func setUserDetails(userID: String, email: String) {
         self.currentUser = User(id: userID, email: email)
@@ -21,7 +28,7 @@ class UserViewModel: ObservableObject {
     private func fetchUserDetails() {
         guard let userID = self.currentUser?.id else { return }
 
-        db.collection("users").document(userID).getDocument { (document, error) in
+        db.collection("user").document(userID).getDocument { (document, error) in
             if let document = document, document.exists, let data = document.data() {
                 let username = data["username"] as? String ?? ""
                 let bio = data["bio"] as? String ?? ""

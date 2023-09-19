@@ -13,9 +13,11 @@
  */
 
 import SwiftUI
+import Firebase
 
 struct NoteDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var notelistVM: NoteListViewModel
     let viewModel = NoteDetailViewModel()
     
     // get from note list view
@@ -24,6 +26,8 @@ struct NoteDetailView: View {
     
     @State private var isEditing : Bool = false
     @State var bodyTextEditorHeight : CGFloat = 20
+    
+    let currentUserID = Auth.auth().currentUser?.uid
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -43,6 +47,20 @@ struct NoteDetailView: View {
                     Button {
                         noteStatus = .none
                         isEditing.toggle()
+                        
+                        notelistVM.addOrUpdateNote(note)
+
+                        // Save the updated note to Firestore
+                        notelistVM.saveAllNotesToFirestore(userId: currentUserID!) { success in
+                            if success {
+                                print("Successfully saved note.")
+                                // You can add other UI changes here if needed
+                            } else {
+                                print("Failed to save note.")
+                                // Handle error or notify the user
+                            }
+                        }
+                        
                         if noteStatus == .create {
                             // create request
                             noteStatus = .none
@@ -141,6 +159,7 @@ struct NoteDetailView: View {
 struct NoteDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NoteDetailView(note: .constant(NoteModel.sample), noteStatus: .constant(.none))
+            //.environmentObject(NoteListViewModel())
     }
 }
 

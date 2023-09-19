@@ -11,6 +11,7 @@ import Firebase
 @main
 struct Dictionary23amApp: App {
     @StateObject private var userVM = UserViewModel()
+    @StateObject private var notelistVM = NoteListViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -20,6 +21,7 @@ struct Dictionary23amApp: App {
         WindowGroup {
             SplashScreenView()
                 .environmentObject(userVM)
+                .environmentObject(notelistVM)
         }
     }
 }
