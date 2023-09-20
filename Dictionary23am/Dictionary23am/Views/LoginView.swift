@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import LocalAuthentication
 
 struct LoginView: View {
     @EnvironmentObject var userVM: UserViewModel
@@ -53,7 +54,7 @@ struct LoginView: View {
                 
                 Button {
                     // login action
-                   login()
+                    login()
                 } label: {
                     Text("Login")
                         .bold()
@@ -62,11 +63,16 @@ struct LoginView: View {
                         .cornerRadius(10)
                 }
                 
+                Button(action: authenticateWithBiometrics) {
+                    Image(systemName: "faceid")
+                        .foregroundColor(.primary)
+                }
+                
                 Button("Forgot Password?") {
                     showForgotPasswordSheet = true
                 }
                 .foregroundColor(.white)
-
+                
                 
                 //Spacer()
                 
@@ -77,13 +83,25 @@ struct LoginView: View {
                         .foregroundColor(.white)
                 }
                 
-                Spacer()
+                //Spacer()
             }
             .background(Color.gray)
             .navigationBarBackButtonHidden(true)
             .navigationViewStyle(.stack)
             .sheet(isPresented: $showForgotPasswordSheet) {
                 ResetPasswordView()
+            }
+        }
+    }
+    
+    func authenticateWithBiometrics() {
+        authenticateUser { authenticated in
+            if authenticated {
+                self.isUserAuthenticated = true
+            } else {
+                // Biometric authentication failed or was canceled.
+                // Handle this appropriately in your UI, for example by showing an error message.
+                self.errorText = "Biometric authentication failed or was canceled."
             }
         }
     }
@@ -103,6 +121,29 @@ struct LoginView: View {
                 }
                 self.isUserAuthenticated = true
             }
+        }
+    }
+    
+    func authenticateUser(completion: @escaping (Bool) -> Void) {
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Authenticate to login into your account"
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                DispatchQueue.main.async {
+                    if success {
+                        completion(true)
+                    } else {
+                        print("Face ID/Touch ID error:", authenticationError?.localizedDescription ?? "Unknown error")
+                        completion(false)
+                    }
+                }
+            }
+        } else {
+            print("Face ID/Touch ID is not available:", error?.localizedDescription ?? "Unknown error")
+            completion(false)
         }
     }
 }

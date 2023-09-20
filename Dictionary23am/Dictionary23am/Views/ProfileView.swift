@@ -26,9 +26,14 @@ struct ProfileView: View {
                 Spacer()
                 
                 if let user = userVM.currentUser {
-                    AsyncImage(url: URL(string: user.imgUrl))
-                        .frame(width: 120, height: 120)
-                        .cornerRadius(100)
+                    AsyncImage(url: URL(string: user.imgUrl)) { image in
+                       image
+                           .resizable()
+                           .frame(width: 120, height: 120)
+                           .cornerRadius(100)
+                   } placeholder: {
+                       ProgressView()  // Loading icon
+                   }
                     
                     Text("Name: \(user.username)")
                         .font(.title)
@@ -81,7 +86,7 @@ struct ProfileView: View {
             )
         }
     }
-    
+
     func logout() {
             do {
                 try Auth.auth().signOut()

@@ -30,10 +30,12 @@ class UserViewModel: ObservableObject {
 
         db.collection("user").document(userID).getDocument { (document, error) in
             if let document = document, document.exists, let data = document.data() {
+                let imgUrl = data["imgUrl"] as? String ?? ""
                 let username = data["username"] as? String ?? ""
                 let bio = data["bio"] as? String ?? ""
                 
                 // Update user object with fetched details
+                self.currentUser?.imgUrl = imgUrl
                 self.currentUser?.username = username
                 self.currentUser?.bio = bio
             } else {
