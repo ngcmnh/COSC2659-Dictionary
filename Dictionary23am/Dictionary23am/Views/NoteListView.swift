@@ -14,13 +14,8 @@ import SwiftUI
 import Firebase
 
 struct NoteListView: View {
-    // Sample Notes Data
-    //    @State private var notes = [
-    //        Note(content: "First note", isSelected: false),
-    //        Note(content: "Second note", isSelected: false),
-    //        Note(content: "Third note", isSelected: false)
-    //    ]
     @StateObject var viewModel = NoteListViewModel()
+    
     @State var tempNote: NoteModel
     @State var noteStatus: NoteStatus = .none
     @State var prevStatus: NoteStatus = .none
@@ -28,20 +23,8 @@ struct NoteListView: View {
     @State private var action: Int? = 0
     let currentUserID = Auth.auth().currentUser?.uid
     
-    //    var customBinding: Binding<NoteStatus> {
-    //        .init {
-    //            noteStatus
-    //        } set: { newValue in
-    //            print("New status: ", newValue)
-    //            if newValue == .none && noteStatus == .create {
-    //                viewModel.notes.append(tempNote)
-    //            }
-    //            noteStatus = newValue
-    //        }
-    //    }
-    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach($viewModel.notes) { $note in
                     // Within the NoteListView's ForEach loop:
@@ -69,9 +52,10 @@ struct NoteListView: View {
                             }
                         } label: {
                             Text("Delete")
+                                .font(Font(viewModel.body))
                                 .foregroundColor(.white) // Text color
-                                .padding(.horizontal, 10) // Add some padding around the text
-                                .padding(.vertical, 5)
+                                .padding(.horizontal, viewModel.horizontalPadding) // Add some padding around the text
+                                .padding(.vertical, viewModel.verticalPadding)
                                 .background(Color.red) // Background color
                                 .cornerRadius(5) // Optional: Round the corners of the button
                         }
@@ -79,8 +63,9 @@ struct NoteListView: View {
                     }
                 }
                 Text("Number of Notes: \(viewModel.notes.count)") // This line displays the count of notes.
-                    .padding(.top, 5)
-                    .font(.footnote)
+                    .padding(.horizontal, viewModel.horizontalPadding)
+                    .padding(.vertical, viewModel.verticalPadding)
+                    .font(Font(viewModel.footnote))
                     .foregroundColor(Color("Text").opacity(0.6))
             }
             .background(    // Invisible navigation link activated when the add note button is clicked
@@ -95,6 +80,7 @@ struct NoteListView: View {
                     self.action = 1
                 } label: {
                     Image(systemName: "plus")
+                        .font(Font(viewModel.body))
                         .foregroundColor(Color("Primary"))
                 }
             }

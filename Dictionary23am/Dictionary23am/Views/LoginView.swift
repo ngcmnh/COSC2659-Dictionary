@@ -19,6 +19,8 @@ struct LoginView: View {
     @State private var showForgotPasswordSheet = false
     @State private var isUserAuthenticated: Bool = (Auth.auth().currentUser != nil)
     
+    let viewModel = LoginViewModel()
+    
     var body: some View {
         if isUserAuthenticated {
             ContentView(isLoggedIn: $isUserAuthenticated)
@@ -34,34 +36,55 @@ struct LoginView: View {
                 NavigationLink("", destination: SignUpView(), isActive: $navigateToSignUp)
                     .opacity(0)
                 
-                Text("Login")
-                    .font(.largeTitle)
-                
                 Spacer()
+                    .frame(height: viewModel.screenHeight/6)
                 
-                TextField ("Email", text: $email)
-                    .foregroundColor(.primary)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, 30)
+                Text("Login")
+                    .font(Font(viewModel.largeTitle))
+                    .foregroundColor(Color("Primary"))
+                    .padding(.vertical, 40)
                 
-                SecureField ("Password", text: $password)
-                    .foregroundColor(.primary)
-                    .textFieldStyle(.roundedBorder)
-                    .padding(.horizontal, 30)
+                VStack (spacing: 20) {
                 
-                Text(errorText)
-                    .font(.title3)
+                    TextField ("Email", text: $email)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(Color("Text"))
+                        .tint(Color("Tertiary"))
+                        .textContentType(.emailAddress)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .padding(.all, 8)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                    SecureField ("Password", text: $password)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(Color("Text"))
+                        .tint(Color("Tertiary"))
+                        .textContentType(.password)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .padding(.all, 8)
+                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                    
+                    Text(errorText)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(.red)
+                }
+                .padding(.horizontal, viewModel.horizontalPadding)
                 
                 Button {
                     // login action
                     login()
                 } label: {
                     Text("Login")
+                        .font(Font(viewModel.footnote))
                         .bold()
+                        .foregroundColor(Color("TextOnPrimary"))
                         .frame(width: 140, height:40)
-                        .background(Color.white)
+                        .background(Color("Primary"))
                         .cornerRadius(10)
                 }
+                .padding(.bottom, 70)
                 
                 Button(action: authenticateWithBiometrics) {
                     Image(systemName: "faceid")
@@ -71,27 +94,28 @@ struct LoginView: View {
                 Button("Forgot Password?") {
                     showForgotPasswordSheet = true
                 }
-                .foregroundColor(.white)
+                .foregroundColor(Color("Primary"))
                 
                 
                 //Spacer()
                 
                 Button(action: {
+                    print("In Login, navigate to sign up? \(navigateToSignUp)")
                     self.navigateToSignUp = true
                 }) {
                     Text("Don't have an account? Sign Up")
-                        .foregroundColor(.white)
+                        .font(Font(viewModel.body))
+                        .foregroundColor(Color("Text"))
                 }
                 
-                //Spacer()
+                Spacer()
             }
-            .background(Color.gray)
             .navigationBarBackButtonHidden(true)
-            .navigationViewStyle(.stack)
             .sheet(isPresented: $showForgotPasswordSheet) {
                 ResetPasswordView()
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func authenticateWithBiometrics() {

@@ -11,6 +11,8 @@
 		273F62982AB4A5690059CC09 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F62972AB4A5690059CC09 /* ProfileView.swift */; };
 		273F629A2AB4B9330059CC09 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273F62992AB4B9330059CC09 /* LoginView.swift */; };
 		275530502ABAB1B6000B5999 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2755304F2ABAB1B6000B5999 /* ResetPasswordView.swift */; };
+		275530532ABAE268000B5999 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275530522ABAE268000B5999 /* LoginViewModel.swift */; };
+		275530552ABAE2E0000B5999 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275530542ABAE2E0000B5999 /* SignUpViewModel.swift */; };
 		27B183582AB5A58A00E7E00A /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B183572AB5A58A00E7E00A /* CustomTabBar.swift */; };
 		27B1835C2AB5A6B900E7E00A /* DictionaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1835B2AB5A6B900E7E00A /* DictionaryModel.swift */; };
 		27B1835E2AB5A6DE00E7E00A /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B1835D2AB5A6DE00E7E00A /* DictionaryView.swift */; };
@@ -43,6 +45,8 @@
 		273F62992AB4B9330059CC09 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2755304F2ABAB1B6000B5999 /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		275530512ABADD91000B5999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		275530522ABAE268000B5999 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		275530542ABAE2E0000B5999 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		27B183572AB5A58A00E7E00A /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		27B1835B2AB5A6B900E7E00A /* DictionaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryModel.swift; sourceTree = "<group>"; };
 		27B1835D2AB5A6DE00E7E00A /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				273290422AB6A2E9005B9EE9 /* UserViewModel.swift */,
 				27F2DF912AB85A190061E8E0 /* NoteDetailViewModel.swift */,
 				27F2DF952AB85A7E0061E8E0 /* NoteListViewModel.swift */,
+				275530522ABAE268000B5999 /* LoginViewModel.swift */,
+				275530542ABAE2E0000B5999 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -261,7 +267,9 @@
 				27B183582AB5A58A00E7E00A /* CustomTabBar.swift in Sources */,
 				27D213472AAC15B500E91149 /* Dictionary23amApp.swift in Sources */,
 				27F2DF9A2AB85AA40061E8E0 /* NoteRowView.swift in Sources */,
+				275530532ABAE268000B5999 /* LoginViewModel.swift in Sources */,
 				275530502ABAB1B6000B5999 /* ResetPasswordView.swift in Sources */,
+				275530552ABAE2E0000B5999 /* SignUpViewModel.swift in Sources */,
 				27F2DF8C2AB859A40061E8E0 /* AddNoteView.swift in Sources */,
 				27B183642AB5BE9400E7E00A /* UserModel.swift in Sources */,
 			);

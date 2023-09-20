@@ -15,12 +15,12 @@ struct EditProfileSheet: View {
     @State private var bio = ""
     @State private var selectedImageUrl: String? = nil
     @State private var imageUrls = [
-        "https://images.foody.vn/res/g95/944014/prof/s360x270/foody-upload-api-foody-mobile-gfgfgfgf-190730093015.jpg",
-        "https://images.foody.vn/res/g1/1362/prof/s576x330/foody-mobile-pho-hung-nguyen-trai-986-635810420871508422.jpg",
-        "https://images.foody.vn/res/g11/105275/prof/s360x270/image-5855cf4d-230719143433.jpeg",
-        "https://images.foody.vn/res/g5/47293/prof/s360x270/image-02e4e88c-221228093305.jpeg",
-        "https://images.foody.vn/res/g98/979200/s360x270/foody-upload-api-foody-album-20507789_14565707877-191129141122.jpg",
-        "https://images.foody.vn/res/g28/273807/prof/s360x270/foody-mobile-14ss-jpg-569-636088555223057387.jpg",
+        "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80",
+        "https://images.unsplash.com/photo-1462524500090-89443873e2b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+        "https://images.unsplash.com/photo-1617959134699-1c49d9be59e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2748&q=80",
+        "https://images.unsplash.com/photo-1453235421161-e41b42ebba05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
+        "https://images.unsplash.com/photo-1522162363424-d29ded2ad958?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2748&q=80",
+        "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2717&q=80"
     ]
     
     var body: some View {
@@ -33,17 +33,26 @@ struct EditProfileSheet: View {
                                 AsyncImage(url: URL(string: imageUrl), content: { image in
                                     image
                                         .resizable()
+                                        .aspectRatio(contentMode: .fill)
                                         .frame(width: 120, height: 120)
                                         .cornerRadius(100)
                                 }, placeholder: {
-                                    Circle().foregroundColor(.gray)
+                                    Circle()
+                                        .foregroundColor(.gray)
+                                        .frame(width: 120, height: 120)
                                 })
-                                .overlay(
-                                    // Overlay checkmark if image is selected
-                                    Image(systemName: "checkmark")
-                                        .opacity(selectedImageUrl == imageUrl ? 1 : 0)
-                                        .foregroundColor(.white)
-                                )
+                                .overlay {
+                                    if selectedImageUrl == imageUrl {
+                                        Color(.black).opacity(0.3)
+                                            .frame(width: 120, height: 120)
+                                            .cornerRadius(100)
+                                        // Overlay checkmark if image is selected
+                                        Image(systemName: "checkmark")
+                                            .bold()
+                                            .foregroundColor(.white)
+                                            .opacity(1)
+                                    }
+                                }
                             }
                             .onTapGesture {
                                 selectedImageUrl = imageUrl
@@ -54,11 +63,14 @@ struct EditProfileSheet: View {
                 
                 Section(header: Text("Name")) {
                     TextField("", text: $username)
+                        .autocorrectionDisabled()
                 }
+                .font(Font(userVM.body))
                 
                 Section(header: Text("bio")) {
                     TextEditor(text: $bio)
                 }
+                .font(Font(userVM.body))
             }
             .onAppear {
                 if let currentUser = userVM.currentUser {
@@ -75,6 +87,7 @@ struct EditProfileSheet: View {
                         bio = ""
                     }) {
                         Image(systemName: "xmark")
+                            .foregroundColor(Color("Primary"))
                     }
                 }
 
@@ -86,8 +99,8 @@ struct EditProfileSheet: View {
                         bio = ""
                     }) {
                         Image(systemName: "checkmark")
+                            .foregroundColor(Color("Primary"))
                     }
-                    //.disabled(username.isEmpty || bio.isEmpty)
                 }
             })
             .navigationTitle("Edit Profile")

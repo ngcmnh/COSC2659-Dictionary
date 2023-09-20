@@ -10,67 +10,87 @@ import Firebase
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode
-    @State private var navigateToLogin = false
     @State private var email = ""
     @State private var password = ""
     @State private var reconfirmPassword = ""
     @State private var errorText = ""
     @State private var alreadyLoggedIn = false
     
+    let viewModel = SignUpViewModel()
+    
     var body: some View {
         VStack(spacing: 30) {
             
-            NavigationLink("", destination: LoginView(), isActive: $navigateToLogin)
-                //.opacity(0)
+            Spacer()
+                .frame(height: viewModel.screenHeight/6)
             
             Text("Sign Up")
-                .font(.largeTitle)
+                .font(Font(viewModel.largeTitle))
                 .padding(.vertical, 40)
+                .foregroundColor(Color("Primary"))
             
-            //Spacer()
-            
-            TextField ("Email", text: $email)
-                .foregroundColor(.primary)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
-            
-            SecureField ("Password", text: $password)
-                .foregroundColor(.primary)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
-            
-            SecureField ("Reconfirm Password", text: $reconfirmPassword)
-                .foregroundColor(.primary)
-                .textFieldStyle(.roundedBorder)
-                .padding(.horizontal, 30)
-            
-            Text(errorText)
-                .font(.title3)
-            
+            VStack(spacing: 20) {
+                TextField ("Email", text: $email)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                SecureField ("Password", text: $password)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                SecureField ("Reconfirm Password", text: $reconfirmPassword)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
+                    .tint(Color("Tertiary"))
+                    .textContentType(.password)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .padding(.all, 8)
+                    .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                
+                Text(errorText)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(.red)
+            }
+            .padding(.horizontal, viewModel.horizontalPadding)
+
             Button {
                 // sign up
                 signup()
             } label: {
                 Text("Sign Up")
+                    .font(Font(viewModel.body))
                     .bold()
                     .frame(width: 140, height:40)
-                    .background(Color.white)
+                    .background(Color("Primary"))
                     .cornerRadius(10)
+                    .foregroundColor(Color("TextOnPrimary"))
             }
-            
-            Spacer()
+            .padding(.bottom, 70)
             
             Button(action: {
-                self.navigateToLogin = true
                 self.presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Already have an account? Login")
-                    .foregroundColor(.white)
+                    .font(Font(viewModel.body))
+                    .foregroundColor(Color("Text"))
             }
             
             Spacer()
         }
-        .background(Color.gray)
+        .background(Color("Background"))
         .navigationBarBackButtonHidden(true)
     }
     
@@ -89,7 +109,7 @@ struct SignUpView: View {
             }
         }
     }
-
+    
     func storeUserInFirestore(userID: String) {
         let userDocument: [String: Any] = [
             "id": userID,
@@ -97,20 +117,19 @@ struct SignUpView: View {
             "username": "",  // default empty for now
             "bio": ""  // default empty for now
         ]
-
+        
         Firestore.firestore().collection("user").document(userID).setData(userDocument, merge: false) { error in
             if let error = error {
                 print("Error writing user to Firestore: \(error)")
                 print(userID)
             } else {
                 print("User successfully written to Firestore!")
-                self.navigateToLogin = true
+                self.presentationMode.wrappedValue.dismiss()
             }
         }
     }
-
+    
     func handleSignupError(_ message: String) {
-        self.navigateToLogin = false
         print(message)
         errorText = message
     }

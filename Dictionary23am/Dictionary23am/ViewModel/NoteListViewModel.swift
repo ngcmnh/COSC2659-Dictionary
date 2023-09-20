@@ -13,7 +13,7 @@
 import Foundation
 import Firebase
 
-class NoteListViewModel: ObservableObject {
+class NoteListViewModel: ObservableObject, ViewModel{
     @Published var notes: [NoteModel] = []
     let db = Firestore.firestore()
 
@@ -136,5 +136,21 @@ class NoteListViewModel: ObservableObject {
 //        result.append(NoteModel(id: UUID(), title: "Note 1", dateCreated: Date(), body: "Some notes ..."))
 //        result.append(NoteModel(id: UUID(), title: "Note 2", dateCreated: Date(), body: "Some more notes ..."))
         return result
+    }
+    
+    var horizontalPadding: CGFloat {
+        if isIpad {
+            return 20
+        } else {
+            return 10
+        }
+    }
+    
+    var verticalPadding: CGFloat {
+        if isIpad {
+            return 10
+        } else {
+            return 5
+        }
     }
 }

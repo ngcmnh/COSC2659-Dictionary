@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class UserViewModel: ObservableObject {
+class UserViewModel: ObservableObject, ViewModel {
     @Published var currentUser: User?
     private var db = Firestore.firestore()
     
@@ -62,6 +62,30 @@ class UserViewModel: ObservableObject {
                 self.currentUser?.username = username
                 self.currentUser?.bio = bio
             }
+        }
+    }
+    
+    var horizontalPadding : CGFloat {
+        if isIpad {
+            return 150
+        } else {
+            return 25
+        }
+    }
+    
+    var verticalPadding : CGFloat {
+        if isIpad {
+            return 30
+        } else {
+            return 18
+        }
+    }
+    
+    var profilePicSize: CGFloat {
+        if isIpad {
+            return screenWidth/5
+        } else {
+            return screenWidth/5*2
         }
     }
 }

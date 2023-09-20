@@ -14,7 +14,7 @@ enum SearchState {
     case none, searched, cleared
 }
 
-class DictionaryViewModel: ObservableObject {
+class DictionaryViewModel: ObservableObject, ViewModel {
     
     @Published var entry: DictionaryEntry?
     @Published var word: String = ""
@@ -48,4 +48,20 @@ class DictionaryViewModel: ObservableObject {
         }
         task.resume()
     }
+    
+    var horizontalPadding: CGFloat {
+            if isIpad {
+                return 40
+            } else {
+                return 18
+            }
+        }
+        
+        var buttonWidth: CGFloat {
+            if isIpad {
+                return 80
+            } else {
+                return 60
+            }
+        }
 }

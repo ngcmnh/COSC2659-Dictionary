@@ -30,4 +30,12 @@ class NoteDetailViewModel : ViewModel {
             return 18
         }
     }
+    
+    var spacing: CGFloat {
+        if isIpad {
+            return 30
+        } else {
+            return 15
+        }
+    }
 }
