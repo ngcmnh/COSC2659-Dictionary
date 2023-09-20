@@ -125,12 +125,14 @@ struct LoginView: View {
             } else {
                 // Biometric authentication failed or was canceled.
                 // Handle this appropriately in your UI, for example by showing an error message.
-                self.errorText = "Biometric authentication failed or was canceled."
+                //self.errorText = "Biometric authentication failed or was canceled."
             }
         }
     }
     
     func login() {
+        self.errorText = ""
+        
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print(error.localizedDescription)

@@ -99,6 +99,7 @@ struct SignUpView: View {
             handleSignupError("Confirm password does not match")
             return
         }
+        self.errorText = ""
         
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
