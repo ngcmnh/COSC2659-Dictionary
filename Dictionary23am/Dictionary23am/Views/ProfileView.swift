@@ -27,12 +27,15 @@ struct ProfileView: View {
                                 isDark.toggle()
                             }, label: {
                                 VStack {
-                                    Image(systemName: isDark ? "moon.circle" : "sun.max.circle")
-                                        .font(.system(size:20))
+                                    Image(systemName: isDark ? "moon" : "sun.max")
+                                        .font(Font(userVM.body))
                                     Spacer().frame(height: 10)
                                 }
                             })
+                            .foregroundColor(Color("Primary"))
                             .preferredColorScheme(isDark ? .dark : .light)
+                            .padding(.top, 10)
+                            .padding(.leading, 18)
                             
                             Spacer()
 
