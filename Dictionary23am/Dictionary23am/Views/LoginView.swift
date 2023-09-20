@@ -42,7 +42,7 @@ struct LoginView: View {
                     .foregroundColor(Color("Primary"))
                     .padding(.vertical, 40)
                 
-                VStack {
+                VStack (spacing: 20){
                     
                     TextField ("Email", text: $email)
                         .font(Font(viewModel.body))
