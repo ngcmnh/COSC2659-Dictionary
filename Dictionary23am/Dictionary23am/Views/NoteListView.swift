@@ -27,20 +27,8 @@ struct NoteListView: View {
     @State var showingAddNoteView = false
     @State private var action: Int? = 0
     
-    //    var customBinding: Binding<NoteStatus> {
-    //        .init {
-    //            noteStatus
-    //        } set: { newValue in
-    //            print("New status: ", newValue)
-    //            if newValue == .none && noteStatus == .create {
-    //                viewModel.notes.append(tempNote)
-    //            }
-    //            noteStatus = newValue
-    //        }
-    //    }
-    
     var body: some View {
-        NavigationView {
+        NavigationStack() {
             List {
                 ForEach($viewModel.notes) { $note in
                     // Within the NoteListView's ForEach loop:
@@ -57,9 +45,10 @@ struct NoteListView: View {
                             }
                         } label: {
                             Text("Delete")
+                                .font(Font(viewModel.body))
                                 .foregroundColor(.white) // Text color
-                                .padding(.horizontal, 10) // Add some padding around the text
-                                .padding(.vertical, 5)
+                                .padding(.horizontal, viewModel.horizontalPadding) // Add some padding around the text
+                                .padding(.vertical, viewModel.verticalPadding)
                                 .background(Color.red) // Background color
                                 .cornerRadius(5) // Optional: Round the corners of the button
                         }
@@ -67,8 +56,9 @@ struct NoteListView: View {
                     }
                 }
                 Text("Number of Notes: \(viewModel.notes.count)") // This line displays the count of notes.
-                    .padding(.top, 5)
-                    .font(.footnote)
+                    .padding(.horizontal, viewModel.horizontalPadding)
+                    .padding(.vertical, viewModel.verticalPadding)
+                    .font(Font(viewModel.footnote))
                     .foregroundColor(Color("Text").opacity(0.6))
             }
             .background(    // Invisible navigation link activated when the add note button is clicked
@@ -82,6 +72,7 @@ struct NoteListView: View {
                     self.action = 1
                 } label: {
                     Image(systemName: "plus")
+                        .font(Font(viewModel.body))
                         .foregroundColor(Color("Primary"))
                 }
                 

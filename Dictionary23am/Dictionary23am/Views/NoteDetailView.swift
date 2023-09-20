@@ -70,14 +70,14 @@ struct NoteDetailView: View {
             .padding(.bottom, 10)
             // ------------------------------------------
             ScrollView {
-                VStack (alignment: .leading, spacing: 15) {
+                VStack (alignment: .leading, spacing: viewModel.spacing) {
                     // -------- EDIT MODE ----------------
                     if isEditing {
                         TextEditor(text: $note.title)
                             .frame(width: (viewModel.screenWidth - viewModel.horizontalPadding*2))
                             .frame(minHeight: (UIFont.preferredFont(forTextStyle: .largeTitle).pointSize+7))
                             .scaledToFit()
-                            .font(.title)
+                            .font(Font(viewModel.title1))
                             .bold()
                             .foregroundColor(Color("Text"))
                             .disableAutocorrection(true)
@@ -85,12 +85,12 @@ struct NoteDetailView: View {
                         
                         
                         Text("\(note.dateCreated.formatted(.dateTime.hour().minute().day().month().year()))")
-                            .font(.subheadline)
+                            .font(Font(viewModel.subHeadline))
                             .foregroundColor(Color("Text").opacity(0.6))
                         
                         ZStack {
                             Text(note.body)
-                                .font(.body)
+                                .font(Font(viewModel.body))
                                 .foregroundColor(.clear)
                                 .lineSpacing(5)
                                 .padding(14)
@@ -109,15 +109,16 @@ struct NoteDetailView: View {
                     // -------- VIEW MODE ----------------
                     else {
                         Text(note.title)
-                            .font(.title)
+                            .font(Font(viewModel.title1))
                             .bold()
                             .foregroundColor(Color("Text"))
                         
                         Text("\(note.dateCreated.formatted(.dateTime.hour().minute().day().month().year()))")
-                            .font(.subheadline)
+                            .font(Font(viewModel.subHeadline))
                             .foregroundColor(Color("Text").opacity(0.6))
                         
                         Text(note.body)
+                            .font(Font(viewModel.body))
                             .foregroundColor(Color("Text"))
                             .lineSpacing(5)
                     }

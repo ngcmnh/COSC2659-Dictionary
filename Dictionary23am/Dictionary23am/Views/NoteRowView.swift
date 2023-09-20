@@ -9,12 +9,16 @@ import SwiftUI
 
 struct NoteRowView: View {
 //    @Binding var isDone: Bool
+    let viewModel = NoteListViewModel()
     var noteContent: String
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(noteContent)
+                    .font(Font(viewModel.body))
+                    .padding(.horizontal, viewModel.horizontalPadding)
+                    .padding(.vertical, viewModel.verticalPadding)
             }
             
             Spacer()
