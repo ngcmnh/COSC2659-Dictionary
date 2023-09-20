@@ -11,6 +11,7 @@ import Firebase
 struct ProfileView: View {
     @EnvironmentObject var userVM: UserViewModel
     @Binding var isLoggedIn: Bool
+    @AppStorage("isDark") private var isDark = false
     @State private var profileName: String = ""
     @State private var profileBio: String = ""
     @State private var showEditSheet = false
@@ -22,6 +23,17 @@ struct ProfileView: View {
                 if let user = userVM.currentUser {
                     VStack {
                         HStack {
+                            Button (action: {
+                                isDark.toggle()
+                            }, label: {
+                                VStack {
+                                    Image(systemName: isDark ? "moon.circle" : "sun.max.circle")
+                                        .font(.system(size:20))
+                                    Spacer().frame(height: 10)
+                                }
+                            })
+                            .preferredColorScheme(isDark ? .dark : .light)
+                            
                             Spacer()
 
                             Button {
@@ -35,7 +47,6 @@ struct ProfileView: View {
                             .padding(.top, 10)
                             .alert(isPresented: $showAlert) {
                                 Alert(title: Text("Are you sure you want to log out?"), primaryButton: .destructive(Text("Yes")) {logout()}, secondaryButton: .cancel())
-                                
                             }
                         }
                         

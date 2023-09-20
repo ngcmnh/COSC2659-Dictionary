@@ -12,6 +12,7 @@ import Firebase
 struct Dictionary23amApp: App {
     @StateObject private var userVM = UserViewModel()
     @StateObject private var notelistVM = NoteListViewModel()
+    @AppStorage("isDark") var isDark = false
     
     init() {
         FirebaseApp.configure()
@@ -22,6 +23,7 @@ struct Dictionary23amApp: App {
             SplashScreenView()
                 .environmentObject(userVM)
                 .environmentObject(notelistVM)
+                .preferredColorScheme(isDark ? .dark: .light)
         }
     }
 }
