@@ -160,7 +160,6 @@ struct NoteDetailView: View {
 struct NoteDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NoteDetailView(note: .constant(NoteModel.sample), noteStatus: .constant(.none))
-            //.environmentObject(NoteListViewModel())
     }
 }
 

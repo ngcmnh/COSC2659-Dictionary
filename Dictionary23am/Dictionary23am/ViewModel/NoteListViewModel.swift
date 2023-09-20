@@ -70,31 +70,31 @@ class NoteListViewModel: ObservableObject {
         }
     }
 
-    func saveAllNotesToFirestore(userId: String, completion: @escaping (Bool) -> Void) {
-        let batch = db.batch()
-
-        for note in notes {
-            let noteData: [String: Any] = [
-                "id": note.id.uuidString,
-                "userId": userId,
-                "title": note.title,
-                "dateCreated": Timestamp(date: note.dateCreated),
-                "body": note.body
-            ]
-
-            let docRef = db.collection("note").document(note.id.uuidString)
-            batch.setData(noteData, forDocument: docRef)
-        }
-
-        batch.commit { error in
-            if let error = error {
-                print("Error writing all notes to Firestore: \(error)")
-                completion(false)
-            } else {
-                completion(true)
-            }
-        }
-    }
+//    func saveAllNotesToFirestore(userId: String, completion: @escaping (Bool) -> Void) {
+//        let batch = db.batch()
+//
+//        for note in notes {
+//            let noteData: [String: Any] = [
+//                "id": note.id.uuidString,
+//                "userId": userId,
+//                "title": note.title,
+//                "dateCreated": Timestamp(date: note.dateCreated),
+//                "body": note.body
+//            ]
+//
+//            let docRef = db.collection("note").document(note.id.uuidString)
+//            batch.setData(noteData, forDocument: docRef)
+//        }
+//
+//        batch.commit { error in
+//            if let error = error {
+//                print("Error writing all notes to Firestore: \(error)")
+//                completion(false)
+//            } else {
+//                completion(true)
+//            }
+//        }
+//    }
 
     func fetchNotes(for userId: String) {
         self.notes.removeAll()

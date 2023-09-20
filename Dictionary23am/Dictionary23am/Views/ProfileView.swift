@@ -14,6 +14,7 @@ struct ProfileView: View {
     @State private var profileName: String = ""
     @State private var profileBio: String = ""
     @State private var showEditSheet = false
+    @State private var logoutAlert = false
     
     var body: some View {
         NavigationView {
@@ -44,7 +45,7 @@ struct ProfileView: View {
 
                 HStack {
                     Button {
-                        logout()
+                        logoutAlert = true
                     } label: {
                         Text("Logout")
                             .bold()
@@ -68,6 +69,16 @@ struct ProfileView: View {
         .navigationViewStyle(.stack)
         .sheet(isPresented: $showEditSheet) {
             EditProfileSheet()
+        }
+        .alert(isPresented: $logoutAlert) {
+            Alert(
+                title: Text("Logout"),
+                message: Text("Are you sure you want to log out?"),
+                primaryButton: .cancel(),
+                secondaryButton: .default(Text("Yes")) {
+                    logout()
+                }
+            )
         }
     }
     

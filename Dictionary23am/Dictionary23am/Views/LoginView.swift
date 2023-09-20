@@ -15,8 +15,7 @@ struct LoginView: View {
     @State private var password = ""
     @State private var alreadyLoggedIn = false
     @State private var errorText = ""
-    @State private var showPasswordResetAlert = false
-    @State private var passwordResetMessage = ""
+    @State private var showForgotPasswordSheet = false
     @State private var isUserAuthenticated: Bool = (Auth.auth().currentUser != nil)
     
     var body: some View {
@@ -64,7 +63,7 @@ struct LoginView: View {
                 }
                 
                 Button("Forgot Password?") {
-                    sendPasswordReset()
+                    showForgotPasswordSheet = true
                 }
                 .foregroundColor(.white)
 
@@ -82,8 +81,9 @@ struct LoginView: View {
             }
             .background(Color.gray)
             .navigationBarBackButtonHidden(true)
-            .alert(isPresented: $showPasswordResetAlert) {
-                Alert(title: Text("Password Reset"), message: Text(passwordResetMessage), dismissButton: .default(Text("OK")))
+            .navigationViewStyle(.stack)
+            .sheet(isPresented: $showForgotPasswordSheet) {
+                ResetPasswordView()
             }
         }
     }
@@ -103,23 +103,6 @@ struct LoginView: View {
                 }
                 self.isUserAuthenticated = true
             }
-        }
-    }
-    
-    func sendPasswordReset() {
-        guard !email.isEmpty else {
-            passwordResetMessage = "Please enter your email address."
-            showPasswordResetAlert = true
-            return
-        }
-
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if let error = error {
-                passwordResetMessage = "Error: \(error.localizedDescription)"
-            } else {
-                passwordResetMessage = "A password reset link has been sent to your email address."
-            }
-            showPasswordResetAlert = true
         }
     }
 }
