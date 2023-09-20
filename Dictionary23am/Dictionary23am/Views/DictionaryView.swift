@@ -139,7 +139,7 @@ struct DictionaryView: View {
                     }
                 )
                 .padding(.horizontal, viewModel.horizontalPadding)
-                .padding(.bottom, 80)
+                .padding(.bottom, 85)
         }
         .padding(.top, 20)
     }

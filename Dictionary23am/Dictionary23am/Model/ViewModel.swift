@@ -54,6 +54,20 @@ extension ViewModel {
         return UIFont.preferredFont(forTextStyle: .footnote).withSize(UIFont.preferredFont(forTextStyle: .footnote).pointSize)
     }
     
+    var title1: UIFont {
+        if isIpad {
+            return UIFont.preferredFont(forTextStyle: .title1).withSize(UIFont.preferredFont(forTextStyle: .title1).pointSize + 4)
+        }
+        return UIFont.preferredFont(forTextStyle: .title1).withSize(UIFont.preferredFont(forTextStyle: .title1).pointSize)
+    }
+    
+    var title3: UIFont {
+        if isIpad {
+            return UIFont.preferredFont(forTextStyle: .title3).withSize(UIFont.preferredFont(forTextStyle: .title3).pointSize + 5)
+        }
+        return UIFont.preferredFont(forTextStyle: .title3).withSize(UIFont.preferredFont(forTextStyle: .title3).pointSize)
+    }
+    
     var largeTitle: UIFont {
         if isIpad {
             return UIFont.preferredFont(forTextStyle: .largeTitle).withSize(UIFont.preferredFont(forTextStyle: .largeTitle).pointSize + 7)

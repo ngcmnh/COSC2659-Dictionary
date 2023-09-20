@@ -17,52 +17,96 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Profile!")
-                    .font(.largeTitle)
-                    .padding()
-
-                Spacer()
-                
+            VStack (alignment: .leading){
                 if let user = userVM.currentUser {
-                    AsyncImage(url: URL(string: user.imgUrl))
-                        .frame(width: 120, height: 120)
-                        .cornerRadius(100)
+                    VStack {
+                        Spacer()
+                        
+                        AsyncImage(url: URL(string: user.imgUrl)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: userVM.screenWidth/5*2, height: userVM.screenWidth/5*2)
+                                .clipShape(Circle())
+                                .overlay{
+                                    Circle().stroke(.white, lineWidth: 4)
+                                }
+                        } placeholder: {
+                            Image("default-pfp")
+                                .resizable()
+                                .frame(width: userVM.screenWidth/5*2, height: userVM.screenWidth/5*2)
+                                .aspectRatio(contentMode: .fit)
+                                .clipShape(Circle())
+                                .overlay{
+                                    Circle().stroke(.white, lineWidth: 4)
+                                }
+                        }
+                        
+                        Text(!user.username.isEmpty ? "\(user.username)" : "Username")
+                            .font(Font(userVM.title1))
+                            .foregroundColor(Color("Text"))
+                        
+                        HStack {
+                            Spacer()
+                            Button {
+                                showEditSheet = true
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                            .foregroundColor(Color("Primary"))
+                            .padding(.trailing, 18)
+                            .padding(.bottom, 10)
+                        }
+                    }
+                    .frame(width: userVM.screenWidth, height: userVM.screenHeight / 3)
+                    .background(Color("GrayBackground"))
                     
-                    Text("Name: \(user.username)")
-                        .font(.title)
-                        .padding()
-                    
-                    Text("Email: \(user.email)")
-                        .padding()
-                    
-                    Text("Bio: \(user.bio)")
-                        .padding()
+                    VStack (alignment: .leading){
+                        VStack (alignment: .leading){
+                            Text("Bio")
+                                .font(Font(userVM.body))
+                                .bold()
+                            Text("\(user.bio)")
+                                .font(Font(userVM.body))
+                        }
+//                        .frame(width: userVM.screenWidth)
+                        .padding(.vertical, userVM.verticalPadding)
+                        
+                        Divider()
+                        
+                        VStack (alignment: .leading) {
+                            Text("Email")
+                                .font(Font(userVM.body))
+                                .bold()
+                            Text("\(user.email)")
+                                .font(Font(userVM.body))
+                        }
+//                        .frame(width: userVM.screenWidth)
+                        .padding(.vertical, userVM.verticalPadding)
+                    }
+                    .padding(.horizontal, userVM.horizontalPadding)
+                    .frame(width: userVM.screenWidth)
                 }
                 
                 Spacer()
-
+                
                 HStack {
+                    Spacer()
+                    
                     Button {
                         logout()
                     } label: {
                         Text("Logout")
+                            .font(Font(userVM.body))
                             .bold()
-                            .frame(width: 140, height: 40)
-                            .background(Color.white)
-                            .cornerRadius(10)
                     }
-                    .padding()
+                    .buttonStyle(.borderless)
+                    .padding(.all, 10)
+                    .foregroundColor(.red)
                     
-                    Button {
-                        showEditSheet = true
-                    } label: {
-                        Image(systemName: "pencil")
-                    }
-                    .padding()
+                    Spacer()
                 }
-                
-                Spacer()
+                .padding(.bottom, 85)
             }
         }
         .navigationViewStyle(.stack)
@@ -72,13 +116,13 @@ struct ProfileView: View {
     }
     
     func logout() {
-            do {
-                try Auth.auth().signOut()
-                isLoggedIn = false
-            } catch {
-                print("Failed to sign out: \(error.localizedDescription)")
-            }
+        do {
+            try Auth.auth().signOut()
+            isLoggedIn = false
+        } catch {
+            print("Failed to sign out: \(error.localizedDescription)")
         }
+    }
 }
 
 struct ProfileView_Previews: PreviewProvider {
