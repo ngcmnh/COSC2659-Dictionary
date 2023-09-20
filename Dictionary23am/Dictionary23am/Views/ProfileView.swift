@@ -14,19 +14,38 @@ struct ProfileView: View {
     @State private var profileName: String = ""
     @State private var profileBio: String = ""
     @State private var showEditSheet = false
+    @State private var showAlert = false
     
     var body: some View {
         NavigationView {
             VStack (alignment: .leading){
                 if let user = userVM.currentUser {
                     VStack {
+                        HStack {
+                            Spacer()
+
+                            Button {
+                                showAlert = true
+                            } label: {
+                                Image(systemName: "rectangle.portrait.and.arrow.forward")
+                            }
+                            .font(Font(userVM.body))
+                            .foregroundColor(Color("Primary"))
+                            .padding(.trailing, 18)
+                            .padding(.top, 10)
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Are you sure you want to log out?"), primaryButton: .destructive(Text("Log out")) {logout()}, secondaryButton: .cancel())
+                                
+                            }
+                        }
+                        
                         Spacer()
                         
                         AsyncImage(url: URL(string: user.imgUrl)) { image in
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: userVM.screenWidth/5*2, height: userVM.screenWidth/5*2)
+                                .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
                                 .clipShape(Circle())
                                 .overlay{
                                     Circle().stroke(.white, lineWidth: 4)
@@ -34,7 +53,7 @@ struct ProfileView: View {
                         } placeholder: {
                             Image("default-pfp")
                                 .resizable()
-                                .frame(width: userVM.screenWidth/5*2, height: userVM.screenWidth/5*2)
+                                .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
                                 .aspectRatio(contentMode: .fit)
                                 .clipShape(Circle())
                                 .overlay{
@@ -52,6 +71,7 @@ struct ProfileView: View {
                                 showEditSheet = true
                             } label: {
                                 Label("Edit", systemImage: "pencil")
+                                    .font(Font(userVM.body))
                             }
                             .foregroundColor(Color("Primary"))
                             .padding(.trailing, 18)
@@ -89,24 +109,6 @@ struct ProfileView: View {
                 }
                 
                 Spacer()
-                
-                HStack {
-                    Spacer()
-                    
-                    Button {
-                        logout()
-                    } label: {
-                        Text("Logout")
-                            .font(Font(userVM.body))
-                            .bold()
-                    }
-                    .buttonStyle(.borderless)
-                    .padding(.all, 10)
-                    .foregroundColor(.red)
-                    
-                    Spacer()
-                }
-                .padding(.bottom, 85)
             }
         }
         .navigationViewStyle(.stack)

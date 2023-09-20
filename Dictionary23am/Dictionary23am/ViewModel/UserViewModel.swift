@@ -58,7 +58,7 @@ class UserViewModel: ObservableObject, ViewModel {
     
     var horizontalPadding : CGFloat {
         if isIpad {
-            return 250
+            return 150
         } else {
             return 25
         }
@@ -66,9 +66,17 @@ class UserViewModel: ObservableObject, ViewModel {
     
     var verticalPadding : CGFloat {
         if isIpad {
-            return 50
+            return 30
         } else {
             return 18
+        }
+    }
+    
+    var profilePicSize: CGFloat {
+        if isIpad {
+            return screenWidth/5
+        } else {
+            return screenWidth/5*2
         }
     }
 }

@@ -13,7 +13,7 @@ struct EditProfileSheet: View {
     @State private var username = ""
     @State private var email = ""
     @State private var bio = ""
-    @State private var navigateToProfile = false
+//    @State private var navigateToProfile = false
     @State private var selectedImageUrl: String? = nil
     @State private var imageUrls = [
         "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80",
@@ -64,6 +64,7 @@ struct EditProfileSheet: View {
                 
                 Section(header: Text("Name")) {
                     TextField("", text: $username)
+                        .autocorrectionDisabled()
                 }
                 .font(Font(userVM.body))
                 
@@ -75,9 +76,9 @@ struct EditProfileSheet: View {
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        dismiss()
                         username = ""
                         bio = ""
+                        dismiss()
                     }) {
                         Image(systemName: "xmark")
                             .foregroundColor(Color("Primary"))
@@ -87,9 +88,9 @@ struct EditProfileSheet: View {
                 ToolbarItem {
                     Button(action: {
                         saveProfileInfo()
-                        navigateToProfile = true
                         username = ""
                         bio = ""
+                        dismiss()
                     }) {
                         Image(systemName: "checkmark")
                             .foregroundColor(Color("Primary"))
