@@ -49,19 +49,27 @@ class DictionaryViewModel: ObservableObject, ViewModel {
         task.resume()
     }
     
+    var topPadding: CGFloat {
+        if isIpad {
+            return 40
+        } else {
+            return 0
+        }
+    }
+    
     var horizontalPadding: CGFloat {
-            if isIpad {
-                return 40
-            } else {
-                return 18
-            }
+        if isIpad {
+            return 40
+        } else {
+            return 18
         }
-        
-        var buttonWidth: CGFloat {
-            if isIpad {
-                return 80
-            } else {
-                return 60
-            }
+    }
+    
+    var buttonWidth: CGFloat {
+        if isIpad {
+            return 80
+        } else {
+            return 60
         }
+    }
 }

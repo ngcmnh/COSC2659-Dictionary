@@ -25,6 +25,7 @@ struct DictionaryView: View {
                 .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
             }
             .padding(.horizontal, viewModel.horizontalPadding)
+            .padding(.top, viewModel.topPadding)
             
             Picker("Category", selection: $viewModel.selectedCategory) {
                 Text("Short Description").tag(Category.shortDescription)
