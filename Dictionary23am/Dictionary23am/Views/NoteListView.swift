@@ -68,10 +68,12 @@ struct NoteListView: View {
                     .font(Font(viewModel.footnote))
                     .foregroundColor(Color("Text").opacity(0.6))
             }
-            .background(    // Invisible navigation link activated when the add note button is clicked
-                    NavigationLink("", destination: NoteDetailView(note: $tempNote, noteStatus: $noteStatus).navigationBarBackButtonHidden(true), tag: 1, selection: $action)
-                        .opacity(0) // Makes it invisible
-                )
+//            .scrollContentBackground(.hidden)
+            .background{    // Invisible navigation link activated when the add note button is clicked
+                NavigationLink("", destination: NoteDetailView(note: $tempNote, noteStatus: $noteStatus).navigationBarBackButtonHidden(true), tag: 1, selection: $action)
+                    .opacity(0) // Makes it invisible
+//                Color("GrayBackground")
+            }
             .toolbar {
                 Button {
                     tempNote = NoteModel(id: UUID(), userId: currentUserID!, title: "Untitled", dateCreated: Date(), body: "empty...")
@@ -87,7 +89,7 @@ struct NoteListView: View {
         }
         .onChange(of: noteStatus, perform: { newStatus in
             if prevStatus == .create && newStatus == .none {
-                viewModel.notes.append(tempNote)
+                viewModel.notes.insert(tempNote, at: 0)
             }
             prevStatus = newStatus
         })

@@ -124,6 +124,7 @@ class NoteListViewModel: ObservableObject, ViewModel{
                         }
                     }
                     self.notes = fetchedNotes
+//                    self.notes.sorted { $0.dateCreated < $1.dateCreated }
                 }
             })
     }
