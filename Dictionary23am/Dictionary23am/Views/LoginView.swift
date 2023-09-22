@@ -19,7 +19,7 @@ struct LoginView: View {
     @State private var errorText = ""
     @State private var showForgotPasswordSheet = false
     @State private var isUserAuthenticated: Bool = (Auth.auth().currentUser != nil)
-    
+
     let viewModel = LoginViewModel()
     
     var body: some View {
@@ -143,11 +143,34 @@ struct LoginView: View {
     func authenticateWithBiometrics() {
         authenticateUser { authenticated in
             if authenticated {
-                self.isUserAuthenticated = true
+                // Retrieve the email, password, and userID from UserDefaults
+                if let storedEmail = UserDefaults.standard.string(forKey: "lastLoggedInUserEmail"),
+                   let storedPassword = UserDefaults.standard.string(forKey: "lastLoggedInUserPassword"),
+                   let storedUserID = UserDefaults.standard.string(forKey: "lastLoggedInUserID") {
+
+                    print("Successfully logged in with User ID: \(storedUserID)")
+
+                    Auth.auth().signIn(withEmail: storedEmail, password: storedPassword) { result, error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            self.errorText = error.localizedDescription
+                        } else {
+                            if let user = result?.user {
+                                let userID = user.uid
+                                print("Successfully logged in with User ID: \(userID)")
+                                self.userVM.setUserDetails(userID: userID, email: storedEmail)
+                                self.isUserAuthenticated = true
+                            }
+                        }
+                    }
+
+                } else {
+                    print("No stored email or userID found.")
+                    // Handle this error appropriately in your UI
+                    //self.errorText = "Stored credentials not found."
+                }
             } else {
-                // Biometric authentication failed or was canceled.
-                // Handle this appropriately in your UI, for example by showing an error message.
-                //self.errorText = "Biometric authentication failed or was canceled."
+                // Handle biometric authentication failure
             }
         }
     }
@@ -165,7 +188,9 @@ struct LoginView: View {
                     let userID = user.uid
                     print("Successfully logged in with User ID: \(userID)")
                     self.userVM.setUserDetails(userID: userID, email: email)
-                    
+                    UserDefaults.standard.set(email, forKey: "lastLoggedInUserEmail")
+                    UserDefaults.standard.set(password, forKey: "lastLoggedInUserPassword")
+                    UserDefaults.standard.set(Auth.auth().currentUser!.uid, forKey: "lastLoggedInUserID")
                 }
                 self.isUserAuthenticated = true
             }

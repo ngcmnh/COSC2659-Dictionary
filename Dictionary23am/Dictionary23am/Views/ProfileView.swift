@@ -29,7 +29,7 @@ struct ProfileView: View {
                                 VStack {
                                     Image(systemName: isDark ? "moon" : "sun.max")
                                         .font(Font(userVM.body))
-                                    Spacer().frame(height: 10)
+                                    Spacer().frame(height: 2)
                                 }
                             })
                             .foregroundColor(Color("Primary"))
