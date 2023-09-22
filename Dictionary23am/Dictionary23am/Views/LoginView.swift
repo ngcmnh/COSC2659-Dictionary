@@ -66,6 +66,12 @@ struct LoginView: View {
                         .padding(.all, 8)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                     
+                    Button("Forgot Password?") {
+                        showForgotPasswordSheet = true
+                    }
+                    .font(Font(userVM.subHeadline))
+                    .foregroundColor(Color("Primary"))
+                    
                     Text(errorText)
                         .font(Font(viewModel.body))
                         .foregroundColor(.red)
@@ -89,15 +95,8 @@ struct LoginView: View {
                 Button(action: authenticateWithBiometrics) {
                     Image(systemName: "faceid")
                         .foregroundColor(.primary)
+                        .font(Font(viewModel.body))
                 }
-                
-                Button("Forgot Password?") {
-                    showForgotPasswordSheet = true
-                }
-                .foregroundColor(Color("Primary"))
-                
-                
-                //Spacer()
                 
                 Button(action: {
                     print("In Login, navigate to sign up? \(navigateToSignUp)")
