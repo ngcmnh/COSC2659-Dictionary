@@ -22,7 +22,7 @@ struct SignUpView: View {
         VStack(spacing: 30) {
             
             Spacer()
-                .frame(height: viewModel.screenHeight/6)
+                .frame(height: viewModel.screenHeight/10)
             
             Text("Sign Up")
                 .font(Font(viewModel.largeTitle))

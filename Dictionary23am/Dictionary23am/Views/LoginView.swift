@@ -14,6 +14,7 @@ struct LoginView: View {
     @State private var navigateToSignUp = false
     @State private var email = ""
     @State private var password = ""
+    @State private var showPassword: Bool = false
     @State private var alreadyLoggedIn = false
     @State private var errorText = ""
     @State private var showForgotPasswordSheet = false
@@ -37,7 +38,7 @@ struct LoginView: View {
                     .opacity(0)
                 
                 Spacer()
-                    .frame(height: viewModel.screenHeight/6)
+                    .frame(height: viewModel.screenHeight/20)
                 
                 Text("Login")
                     .font(Font(viewModel.largeTitle))
@@ -56,15 +57,37 @@ struct LoginView: View {
                         .padding(.all, 8)
                         .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                 
-                    SecureField ("Password", text: $password)
-                        .font(Font(viewModel.body))
-                        .foregroundColor(Color("Text"))
-                        .tint(Color("Tertiary"))
-                        .textContentType(.password)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .padding(.all, 8)
-                        .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                    ZStack(alignment: .trailing) {
+                        if showPassword {
+                            TextField("Password", text: $password)
+                                .font(Font(viewModel.body))
+                                .foregroundColor(Color("Text"))
+                                .tint(Color("Tertiary"))
+                                .textContentType(.password)
+                                .textInputAutocapitalization(.never)
+                                .autocorrectionDisabled()
+                                .padding(.all, 8)
+                                .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                        } else {
+                            SecureField("Password", text: $password)
+                                .font(Font(viewModel.body))
+                                .foregroundColor(Color("Text"))
+                                .tint(Color("Tertiary"))
+                                .textContentType(.password)
+                                .textInputAutocapitalization(.never)
+                                .autocorrectionDisabled()
+                                .padding(.all, 8)
+                                .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
+                        }
+                        
+                        Button(action: {
+                            showPassword.toggle()
+                        }) {
+                            Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
+                                .foregroundColor(Color("Text"))
+                                .padding(.trailing, 8)
+                        }
+                    }
                     
                     Button("Forgot Password?") {
                         showForgotPasswordSheet = true
@@ -95,7 +118,7 @@ struct LoginView: View {
                 Button(action: authenticateWithBiometrics) {
                     Image(systemName: "faceid")
                         .foregroundColor(.primary)
-                        .font(Font(viewModel.body))
+                        .font(Font(viewModel.title3))
                 }
                 
                 Button(action: {
@@ -111,7 +134,7 @@ struct LoginView: View {
             }
             .navigationBarBackButtonHidden(true)
             .sheet(isPresented: $showForgotPasswordSheet) {
-                ResetPasswordView()
+                ResetPasswordSheet()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

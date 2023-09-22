@@ -49,7 +49,7 @@ struct ProfileView: View {
                             .padding(.trailing, 18)
                             .padding(.top, 10)
                             .alert(isPresented: $showAlert) {
-                                Alert(title: Text("Are you sure you want to log out?"), primaryButton: .destructive(Text("Yes")) {logout()}, secondaryButton: .cancel())
+                                Alert(title: Text("Confirm Logout"), message: Text("Are your sure you want to log out?"), primaryButton: .destructive(Text("Yes")) {logout()}, secondaryButton: .cancel())
                             }
                         }
                         
