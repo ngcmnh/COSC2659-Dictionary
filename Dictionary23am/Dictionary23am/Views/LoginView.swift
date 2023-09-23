@@ -9,6 +9,8 @@
  Last modified: 20/09/2023
  Acknowledgement:
  https://developer.apple.com/design/human-interface-guidelines/text-fields
+ https://www.youtube.com/watch?v=6b2WAePdiqA
+ https://www.youtube.com/watch?v=8MLdq9kotIIhttps://www.youtube.com/watch?v=uhTRQ4TWQ9g
  */
 
 import SwiftUI
@@ -104,6 +106,7 @@ struct LoginView: View {
                     Text(errorText)
                         .font(Font(viewModel.body))
                         .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal, viewModel.horizontalPadding)
                 

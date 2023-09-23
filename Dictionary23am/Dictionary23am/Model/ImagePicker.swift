@@ -3,12 +3,12 @@
  Course: COSC2659 iOS Development
  Semester: 2022B
  Assessment: Assignment 2
- Author: Nguyen Ngoc Minh
- ID: S3907086
+ Author: Phan Nhat Minh
+ ID: S3904422
  Created date: 22/09/2023
  Last modified: 23/09/2023
  Acknowledgement:
- 
+ https://www.youtube.com/watch?v=FFWP7eXn0ck
  */
 
 import SwiftUI
