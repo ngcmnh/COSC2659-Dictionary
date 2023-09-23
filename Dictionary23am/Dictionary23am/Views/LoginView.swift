@@ -1,9 +1,17 @@
-//
-//  LoginView.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 15/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Nguyen Ngoc Minh
+ ID: S3907086
+ Created date: 15/09/2023
+ Last modified: 20/09/2023
+ Acknowledgement:
+ https://developer.apple.com/design/human-interface-guidelines/text-fields
+ https://www.youtube.com/watch?v=6b2WAePdiqA
+ https://www.youtube.com/watch?v=8MLdq9kotIIhttps://www.youtube.com/watch?v=uhTRQ4TWQ9g
+ */
 
 import SwiftUI
 import Firebase
@@ -98,6 +106,7 @@ struct LoginView: View {
                     Text(errorText)
                         .font(Font(viewModel.body))
                         .foregroundColor(.red)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 .padding(.horizontal, viewModel.horizontalPadding)
                 

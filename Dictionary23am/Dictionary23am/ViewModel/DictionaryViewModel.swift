@@ -1,4 +1,15 @@
-
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Doan Hoang Anh
+ ID: S3880604
+ Created date: 12/09/2023
+ Last modified: 20/09/2023
+ Acknowledgement:
+ 
+ */
 
 import Foundation
 import AVFoundation

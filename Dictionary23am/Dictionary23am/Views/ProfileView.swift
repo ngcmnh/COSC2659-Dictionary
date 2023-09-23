@@ -1,9 +1,17 @@
-//
-//  MainView.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 15/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Phan Nhat Minh
+ ID: S3904422
+ Created date: 15/09/2023
+ Last modified: 23/09/2023
+ Acknowledgement:
+ https://developer.apple.com/design/human-interface-guidelines/dark-mode
+ https://developer.apple.com/design/human-interface-guidelines/layout
+ https://www.youtube.com/watch?v=6b2WAePdiqA
+ */
 
 import SwiftUI
 import Firebase

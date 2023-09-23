@@ -1,9 +1,15 @@
-//
-//  DictionaryModel.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 16/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Doan Hoang Anh
+ ID: S3880604
+ Created date: 12/09/2023
+ Last modified: 23/09/2023
+ Acknowledgement:
+ 
+ */
 
 import Foundation
 

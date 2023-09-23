@@ -4,9 +4,9 @@
  Semester: 2022B
  Assessment: Assignment 2
  Author: Dang Cong Minh, Tran Minh Anh
- ID: S3931980
+ ID: S390494, S3931980
  Created date: 16/09/2023
- Last modified: /09/2023
+ Last modified: 20/09/2023
  Acknowledgement:
  */
 
@@ -31,7 +31,7 @@ struct NoteListView: View {
                     NavigationLink(destination:  NoteDetailView(note: $note, noteStatus: $noteStatus).navigationBarBackButtonHidden(true)) {
                         NoteRowView(noteContent: note.title)
                     }
-                    
+                    // delete note by swiping note row
                     .swipeActions {
                         Button {
                             withAnimation {
@@ -68,11 +68,9 @@ struct NoteListView: View {
                     .font(Font(viewModel.footnote))
                     .foregroundColor(Color("Text").opacity(0.6))
             }
-//            .scrollContentBackground(.hidden)
             .background{    // Invisible navigation link activated when the add note button is clicked
                 NavigationLink("", destination: NoteDetailView(note: $tempNote, noteStatus: $noteStatus).navigationBarBackButtonHidden(true), tag: 1, selection: $action)
                     .opacity(0) // Makes it invisible
-//                Color("GrayBackground")
             }
             .toolbar {
                 Button {
@@ -88,6 +86,7 @@ struct NoteListView: View {
             }
         }
         .onChange(of: noteStatus, perform: { newStatus in
+            // add to list after creating new note
             if prevStatus == .create && newStatus == .none {
                 viewModel.notes.insert(tempNote, at: 0)
             }

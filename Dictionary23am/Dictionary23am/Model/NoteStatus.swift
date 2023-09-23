@@ -1,9 +1,15 @@
-//
-//  EditState.swift
-//  Dictionary23am
-//
-//  Created by Tran Anh Hung on 16/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Tran Minh Anh
+ ID: S3931980
+ Created date: 16/09/2023
+ Last modified: 16/09/2023
+ Acknowledgement:
+ 
+ */
 
 import Foundation
 

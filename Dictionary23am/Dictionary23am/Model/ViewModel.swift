@@ -6,10 +6,11 @@
  Author: Tran Minh Anh
  ID: S3931980
  Created date: 14/09/2023
- Last modified: /09/2023
+ Last modified: 20/09/2023
  Acknowledgement:
  https://github.com/rckim77/Sudoku
  https://developer.apple.com/design/human-interface-guidelines/typography
+ https://developer.apple.com/design/human-interface-guidelines/layout
  */
 
 import Foundation
@@ -40,6 +41,7 @@ extension ViewModel {
         UIScreen.main.bounds.width
     }
     
+    // MARK: Font size changes according to device
     var body: UIFont {
         if isIpad {
             return UIFont.preferredFont(forTextStyle: .body).withSize(UIFont.preferredFont(forTextStyle: .body).pointSize + 5)

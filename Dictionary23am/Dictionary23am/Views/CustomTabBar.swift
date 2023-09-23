@@ -1,9 +1,15 @@
-//
-//  CustomTabBar.swift
-//  Dictionary23am
-//
-//  Created by minhphan on 16/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Phan Nhat Minh
+ ID: S3904422
+ Created date: 16/09/2023
+ Last modified: 19/09/2023
+ Acknowledgement:
+ https://youtu.be/vzQDKYIKEb8?si=ghJQlGU6RkVpWLv-
+ */
 
 import SwiftUI
 

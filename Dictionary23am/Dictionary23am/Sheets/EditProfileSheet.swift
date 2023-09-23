@@ -1,9 +1,17 @@
-//
-//  EditProfileSheet.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 18/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Phan Nhat Minh
+ ID: S3904422
+ Created date: 18/09/2023
+ Last modified: 23/09/2023
+ Acknowledgement:
+ https://www.youtube.com/watch?v=6b2WAePdiqA
+ https://www.youtube.com/watch?v=UeOi5H3HJOE
+ https://www.youtube.com/watch?v=FFWP7eXn0ck
+ */
 
 import SwiftUI
 import Firebase
@@ -19,90 +27,45 @@ struct EditProfileSheet: View {
     @State private var selectedImageUrl: String? = nil
     @State var shouldShowImagePicker = false
     @State var image: UIImage?
-//    @State private var imageUrls = [
-//        "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80",
-//        "https://images.unsplash.com/photo-1462524500090-89443873e2b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
-//        "https://images.unsplash.com/photo-1617959134699-1c49d9be59e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2748&q=80",
-//        "https://images.unsplash.com/photo-1453235421161-e41b42ebba05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80",
-//        "https://images.unsplash.com/photo-1522162363424-d29ded2ad958?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2748&q=80",
-//        "https://images.unsplash.com/photo-1606214174585-fe31582dc6ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2717&q=80",
-//        "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2574&q=80",
-//        "https://plus.unsplash.com/premium_photo-1661816797370-928a8749043c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2673&q=80"
-//    ]
     
     var body: some View {
         NavigationView {
             VStack (spacing: 30) {
-//                Section(header: Text("Choose Avatar")) {
-//                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100), spacing: 10)], spacing: 35) {
-//                        ForEach(imageUrls, id: \.self) { imageUrl in
-//                            VStack {
-//                                AsyncImage(url: URL(string: imageUrl), content: { image in
-//                                    image
-//                                        .resizable()
-//                                        .aspectRatio(contentMode: .fill)
-//                                        .frame(width: 120, height: 120)
-//                                        .cornerRadius(100)
-//                                }, placeholder: {
-//                                    Circle()
-//                                        .foregroundColor(.gray)
-//                                        .frame(width: 120, height: 120)
-//                                })
-//                                .overlay {
-//                                    if selectedImageUrl == imageUrl {
-//                                        Color(.black).opacity(0.3)
-//                                            .frame(width: 120, height: 120)
-//                                            .cornerRadius(100)
-//                                        // Overlay checkmark if image is selected
-//                                        Image(systemName: "checkmark")
-//                                            .bold()
-//                                            .foregroundColor(.white)
-//                                            .opacity(1)
-//                                    }
-//                                }
-//                            }
-//                            .onTapGesture {
-//                                selectedImageUrl = imageUrl
-//                            }
-//                        }
-//                    }
-//                }
-                
-                Button {
-                    shouldShowImagePicker.toggle()
-                } label: {
-                    VStack {
-                        if let image = self.image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
-                                .clipShape(Circle())
-                                .overlay{
-                                    Circle().stroke(.white, lineWidth: 4)
-                                }
-                        }
-                        else {
-                            Image("default-pfp")
-                                .resizable()
-                                .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
-                                .aspectRatio(contentMode: .fit)
-                                .clipShape(Circle())
-                                .overlay{
-                                    Circle().stroke(.white, lineWidth: 4)
-                                }
-                        }
+                // MARK: Profile image
+                ZStack(alignment: .trailing) {
+                    if let image = self.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
+                            .clipShape(Circle())
+                            .overlay{
+                                Circle().stroke(.white, lineWidth: 4)
+                            }
                     }
-                    .overlay(RoundedRectangle(cornerRadius: 100)
-                        .stroke(Color.black, lineWidth: 3)
-                    )
+                    else {
+                        Image("default-pfp")
+                            .resizable()
+                            .frame(width: userVM.profilePicSize, height: userVM.profilePicSize)
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(Circle())
+                            .overlay{
+                                Circle().stroke(.white, lineWidth: 4)
+                            }
+                    }
+                    
+                    Button {
+                         shouldShowImagePicker.toggle()
+                    } label: {
+                        Image(systemName: "photo.circle.fill")
+                            .foregroundColor(Color("Primary"))
+                            .font(Font(viewModel.title1))
+                            .background(Circle().foregroundColor(Color("Background")))
+                    }
+                    .offset(x: -10, y: userVM.profilePicSize/3)
                 }
                 
-//                Section(header: Text("Name")) {
-//                    TextField("", text: $username)
-//                        .autocorrectionDisabled()
-//                }
-//                .font(Font(userVM.body))
+                // MARK: Name text field
                 TextField ("Name", text: $username)
                     .font(Font(userVM.body))
                     .foregroundColor(Color("Text"))
@@ -112,11 +75,7 @@ struct EditProfileSheet: View {
                     .padding(.all, 8)
                     .overlay(RoundedRectangle(cornerRadius: 5).stroke(style: StrokeStyle(lineWidth: 1)).foregroundColor(Color("TextFieldBorder")))
                 
-//                Section(header: Text("bio")) {
-//                    TextEditor(text: $bio)
-//                }
-//                .font(Font(userVM.body))
-                
+                // MARK: Bio text field
                 TextField ("Bio", text: $bio)
                     .font(Font(userVM.body))
                     .foregroundColor(Color("Text"))
@@ -131,6 +90,7 @@ struct EditProfileSheet: View {
             }
             .padding(.horizontal, viewModel.horizontalPadding)
             .onAppear {
+                // Fill in text fields
                 if let currentUser = userVM.currentUser {
                     self.username = currentUser.username ?? ""
                     self.bio = currentUser.bio ?? ""
@@ -156,7 +116,7 @@ struct EditProfileSheet: View {
                             .foregroundColor(Color("Primary"))
                     }
                 }
-
+                
                 ToolbarItem {
                     Button(action: {
                         saveProfileInfo()
