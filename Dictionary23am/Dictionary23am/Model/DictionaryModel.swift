@@ -3,9 +3,9 @@
  Course: COSC2659 iOS Development
  Semester: 2022B
  Assessment: Assignment 2
- Author: Nguyen Ngoc Minh
- ID: S3907086
- Created date: 16/09/2023
+ Author: Doan Hoang Anh
+ ID: S3880604
+ Created date: 12/09/2023
  Last modified: 23/09/2023
  Acknowledgement:
  
