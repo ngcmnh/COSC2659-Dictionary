@@ -6,10 +6,11 @@
  Author: Tran Minh Anh
  ID: S3931980
  Created date: 14/09/2023
- Last modified: /09/2023
+ Last modified: 20/09/2023
  Acknowledgement:
  https://stackoverflow.com/questions/69002861/controlling-size-of-texteditor-in-swiftui
  https://developer.apple.com/tutorials/swiftui-concepts/driving-changes-in-your-ui-with-state-and-bindings
+ https://developer.apple.com/design/human-interface-guidelines/navigation-bars
  */
 
 import SwiftUI
@@ -51,7 +52,6 @@ struct NoteDetailView: View {
                         notelistVM.addOrUpdateNote(note)
 
                         // Save the updated note to Firestore
-                        //notelistVM.saveAllNotesToFirestore(userId: currentUserID!) { success in
                         notelistVM.saveToFirestore(note: note, userId: currentUserID!) { success in
                             if success {
                                 print("Successfully saved note.")
@@ -62,6 +62,7 @@ struct NoteDetailView: View {
                             }
                         }
                         
+                        // change status to update list view
                         if noteStatus == .create {
                             // create request
                             noteStatus = .none
@@ -107,6 +108,7 @@ struct NoteDetailView: View {
                             .font(Font(viewModel.subHeadline))
                             .foregroundColor(Color("Text").opacity(0.6))
                         
+                        // ZStack needed for dynamic text editor
                         ZStack {
                             Text(note.body)
                                 .font(Font(viewModel.body))
@@ -145,6 +147,7 @@ struct NoteDetailView: View {
             }
             .padding(.horizontal, viewModel.horizontalPadding)
         }
+        // Limit title's characters
         .onChange(of: note.title) { newValue in
             if newValue.count > viewModel.maxChars {
                 note.title = String(newValue.prefix(viewModel.maxChars))

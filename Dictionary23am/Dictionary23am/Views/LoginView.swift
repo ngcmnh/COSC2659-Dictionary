@@ -1,9 +1,15 @@
-//
-//  LoginView.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 15/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Nguyen Ngoc Minh
+ ID: S3907086
+ Created date: 15/09/2023
+ Last modified: 20/09/2023
+ Acknowledgement:
+ https://developer.apple.com/design/human-interface-guidelines/text-fields
+ */
 
 import SwiftUI
 import Firebase

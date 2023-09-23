@@ -1,14 +1,18 @@
-//
-//  NoteListItemView.swift
-//  Dictionary23am
-//
-//  Created by Minh Dang Cong on 15/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Dang Cong Minh
+ ID: S390494
+ Created date: 15/09/2023
+ Last modified: 20/09/2023
+ Acknowledgement:
+ */
 
 import SwiftUI
 
 struct NoteRowView: View {
-//    @Binding var isDone: Bool
     let viewModel = NoteListViewModel()
     var noteContent: String
     
@@ -22,14 +26,6 @@ struct NoteRowView: View {
             }
             
             Spacer()
-            
-//            Button(action: {
-//                isDone.toggle()
-//            }) {
-//                Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
-//            }
-//            .contentShape(Rectangle()) // Capture all touches
-//            .zIndex(1) // Ensure it's above other elements
 
         }
     }
@@ -37,8 +33,6 @@ struct NoteRowView: View {
 
 
 struct NoteRowView_Previews: PreviewProvider {
-//    @State static var sampleIsDone: Bool = false
-    
     static var previews: some View {
         NoteRowView(noteContent: "Sample Note Content")
     }

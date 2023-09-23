@@ -6,7 +6,7 @@
  Author: Dang Cong Minh, Tran Minh Anh
  ID: S3931980
  Created date: 16/09/2023
- Last modified: /09/2023
+ Last modified: 20/09/2023
  Acknowledgement:
  */
 
@@ -70,32 +70,6 @@ class NoteListViewModel: ObservableObject, ViewModel{
         }
     }
 
-//    func saveAllNotesToFirestore(userId: String, completion: @escaping (Bool) -> Void) {
-//        let batch = db.batch()
-//
-//        for note in notes {
-//            let noteData: [String: Any] = [
-//                "id": note.id.uuidString,
-//                "userId": userId,
-//                "title": note.title,
-//                "dateCreated": Timestamp(date: note.dateCreated),
-//                "body": note.body
-//            ]
-//
-//            let docRef = db.collection("note").document(note.id.uuidString)
-//            batch.setData(noteData, forDocument: docRef)
-//        }
-//
-//        batch.commit { error in
-//            if let error = error {
-//                print("Error writing all notes to Firestore: \(error)")
-//                completion(false)
-//            } else {
-//                completion(true)
-//            }
-//        }
-//    }
-
     func fetchNotes(for userId: String) {
         self.notes.removeAll()
         db.collection("note")
@@ -124,7 +98,6 @@ class NoteListViewModel: ObservableObject, ViewModel{
                         }
                     }
                     self.notes = fetchedNotes
-//                    self.notes.sorted { $0.dateCreated < $1.dateCreated }
                 }
             })
     }

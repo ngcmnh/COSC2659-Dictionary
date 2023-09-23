@@ -1,9 +1,15 @@
-//
-//  UserViewModel.swift
-//  Dictionary23am
-//
-//  Created by ngminh on 17/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Nguyen Ngoc Minh
+ ID: S3907086
+ Created date: 17/09/2023
+ Last modified: 23/09/2023
+ Acknowledgement:
+ 
+ */
 
 import Foundation
 import Firebase

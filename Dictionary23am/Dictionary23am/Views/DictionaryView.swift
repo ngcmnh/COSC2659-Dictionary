@@ -1,9 +1,16 @@
-//
-//  DictionaryView.swift
-//  Dictionary23am
-//
-//  Created by Minh Phan on 16/09/2023.
-//
+/*
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 2
+ Author: Phan Nhat Minh, Doan Hoang Anh
+ ID: S3904422, S3880604
+ Created date: 16/09/2023
+ Last modified: 20/09/2023
+ Acknowledgement:
+ https://dictionaryapi.dev/
+ https://gist.github.com/vikaskore/b8e68cb324da31121c8bc6a061e51612
+ */
 
 import SwiftUI
 
